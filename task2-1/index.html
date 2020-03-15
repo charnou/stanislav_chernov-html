@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/styles/main.css">
+    <title>HMTL-task2-1</title>
+</head>
+
+<body>
+
+    <div class="form">
+        <form action="">
+
+            <h1>Form Action</h1>
+            <p id="_mc4wp_action">_mc4wp_action</p>
+
+            <p>This field will allow your visitors to choose whether they would like to subscribe or unsubscribe</p>
+
+            <label>Field Label
+                <input type="text" id="field_label" value="Form Action">
+            </label>
+
+            <label>Choice Type
+                <div id="choice_type">
+                    <select>
+                        <option selected>Radio Buttons</option>
+                        <option>Checkboxes</option>
+                        <option>Car Radio</option>
+                        <option>Вариант 4</option>
+                    </select>
+                </div>
+            </label>
+
+            <div class="choices">Choices
+                <fieldset>
+                    <div class="choices__inner">
+                        <input type="radio" id="subscribe" name="subscribe" checked>
+                        <span class="checkmark"></span>
+                        <label for="subscribe">Subscribe</label>
+                        <input type="radio" name="subscribe">
+                        <span class="crossmark">&times;</span>
+                    </div>
+
+                    <div class="choices__inner">
+                        <input type="radio" id="unsubscribe" name="unsubscribe">
+                        <span class="checkmark"></span>
+                        <label for="unsubscribe">Unsubscribe</label>
+                        <input type="radio" name="unsubscribe">
+                        <span class="crossmark">&times;</span>
+                    </div>
+                </fieldset>
+            </div>
+
+            <div class="checkbox-div">
+                <input type="checkbox" id="wrap" checked="checked">
+                <label for="wrap">Wrap in paragraph tags?</label>
+                <span class="checkbox"></span>
+            </div>
+
+            <input type="submit" value="Add to form">
+
+        </form>
+    </div>
+
+</body>
+
+</html>
