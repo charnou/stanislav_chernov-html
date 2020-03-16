@@ -16,8 +16,6 @@ h1 {
     margin: 0;
 }
 
-
-
 /* HEADER */
 .header {
     position: relative;
@@ -52,8 +50,6 @@ h1 {
     -webkit-text-fill-color: transparent;
 }
 
-
-
 /*SECTION */
 .main {
     position: relative;
@@ -70,8 +66,6 @@ h1 {
 
     border: 1px solid #929292;
 }
-
-
 
 /* BUTTONS */
 button {
@@ -134,6 +128,7 @@ button:active {
     background: linear-gradient(0deg, rgba(255, 191, 45, 1) 25%, rgba(255, 198, 75, 1) 75%);
 }
 
+/* SECTION 2 */
 .blue-sec2 {
     width: 64px;
     height: 20px;
@@ -149,9 +144,6 @@ button:active {
     height: 22px;
 }
 
-
-
-/* SECTION 2 */
 .section:nth-child(2) {
     background-color: #333333;
 }
