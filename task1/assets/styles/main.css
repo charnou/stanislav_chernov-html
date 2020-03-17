@@ -1,0 +1,163 @@
+body {
+    height: 100%;
+    margin: 0;
+
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #020202;
+
+    background-image: url("../img/background.jpg");
+    background-position: center;
+    background-size: cover;
+    background-size: 900px;
+
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: #D6A069;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:link {
+    color: #D6A069;
+}
+
+a:visited {
+    color: #D6A069;
+}
+
+a:active {
+    color: rgb(158, 117, 76);
+}
+
+a::selection {
+    background-color: #7a7a7a;
+}
+
+h1,
+h2 {
+    margin: 0;
+}
+
+/* CONTAINER */
+.container {
+    width: 95%;
+    margin: 10px auto;
+
+    text-align: left;
+}
+
+/* BLOCK STYLING */
+.block-style,
+.main>section {
+    background-color: #E2E3E5;
+
+    border: 1px solid #adadad;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.11),
+        0 2px 2px rgba(0, 0, 0, 0.11),
+        0 4px 4px rgba(0, 0, 0, 0.11),
+        0 8px 8px rgba(0, 0, 0, 0.11),
+        0 16px 16px rgba(0, 0, 0, 0.11),
+        0 32px 32px rgba(0, 0, 0, 0.11);
+}
+
+/* HEADER */
+.header {
+    width: 96%;
+    margin: 10px auto 30px;
+
+    padding: 20px 0 18px 10px;
+
+    text-align: center;
+}
+
+/* NAVIGATION */
+.nav {
+    position: fixed;
+    right: 3%;
+
+    width: 20%;
+
+    padding: 10px;
+
+    font-family: 'Baloo 2', cursive;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* ADVERTISEMENT */
+.ad {
+    position: fixed;
+    right: 3%;
+    bottom: 27%;
+
+    height: max-content;
+    width: 20%;
+
+    padding: 5px;
+
+    font-family: 'Baloo 2', cursive;
+    font-weight: bold;
+    font-size: 14px;
+
+    text-transform: uppercase;
+    text-align: center;
+    color: #020202;
+
+    user-select: none;
+}
+
+.ad img {
+    width: 100%;
+}
+
+/* CONTENT */
+.main {
+    width: 75%;
+}
+
+section {
+    height: max-content;
+
+    margin-bottom: 20px;
+
+    padding: 10px;
+}
+
+.section-right_aligned {
+    text-align: right;
+}
+
+.section-upside_down>p {
+    transform: rotate(180deg);
+}
+
+.section-decorated {
+    text-decoration: underline wavy#D6A069;
+}
+
+.section-letter_spacing {
+    letter-spacing: 3px;
+}
+
+.section-text_shadow {
+    text-shadow: 2px 2px #f18d009c;
+}
+
+/* FOOTER */
+.footer {
+    width: 96%;
+    padding: 5px;
+
+    margin: 0 auto 10px;
+}
