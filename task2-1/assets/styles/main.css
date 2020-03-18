@@ -218,11 +218,13 @@ label {
     background-color: #1e8cbf;
 }
 
-.choices__inner input:hover+.checkmark {
+input.sub-check:hover+.checkmark,
+input.unsub-check:hover+.checkmark {
     background-color: #ccc;
 }
 
-.choices__inner input:checked+.checkmark:after {
+input.sub-check:checked+.checkmark:after,
+input.unsub-check:checked+.checkmark:after {
     display: block;
 }
 
@@ -239,27 +241,36 @@ label {
     font-size: 25px;
 }
 
-.choices__inner input:hover+.crossmark {
-    display: block;
+input.sub-cross,
+input.unsub-cross {
+    display: none;
+}
 
+input.sub-check:checked~input.sub-cross,
+input.unsub-check:checked~input.unsub-cross {
+    display: inline-block;
+}
+
+input.sub-cross:hover+.crossmark,
+input.unsub-cross:hover+.crossmark {
     color: #727272;
 }
 
-.choices__inner input:active+.crossmark {
-    display: block;
-
+input.sub-cross:active+.crossmark,
+input.unsub-cross:active+.crossmark {
     color: #4b4b4b;
 }
 
 /* CHECKBOX */
 .checkbox-div {
     position: relative;
-
     margin-bottom: 20px;
 }
 
 .checkbox-div label {
-    margin-left: 25px;
+    position: relative;
+    left: 24px;
+    bottom: -3px;
 }
 
 .checkbox-div input {
