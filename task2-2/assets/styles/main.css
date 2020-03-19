@@ -2,6 +2,7 @@ body {
     margin: 0;
 
     user-select: none;
+    overflow: hidden;
 
     font-family: 'Courier New', Courier, monospace;
 }
@@ -22,8 +23,6 @@ h1 {
     height: 265px;
 
     z-index: 0;
-
-    background-color: #f4f4f2;
 }
 
 .header__title {
@@ -55,6 +54,8 @@ h1 {
     position: relative;
     z-index: 10;
     padding: 10px 10px;
+
+    height: 100vh;
 
     background-color: #fff;
 }
