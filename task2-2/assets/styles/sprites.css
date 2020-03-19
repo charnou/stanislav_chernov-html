@@ -422,22 +422,22 @@
     background-position: -261px -790px;
 }
 
-.sprite-icon:nth-child(86) {
+.sprite-icon:nth-child(90n+86) {
     background-position: -337px -790px;
 }
 
-.sprite-icon:nth-child(87) {
+.sprite-icon:nth-child(90n+87) {
     background-position: -413px -790px;
 }
 
-.sprite-icon:nth-child(88) {
+.sprite-icon:nth-child(90n+88) {
     background-position: -490px -790px;
 }
 
-.sprite-icon:nth-child(89) {
+.sprite-icon:nth-child(90n+89) {
     background-position: -566px -790px;
 }
 
-.sprite-icon:nth-child(90) {
+.sprite-icon:nth-child(90n+90) {
     background-position: -644px -790px;
 }
