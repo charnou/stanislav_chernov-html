@@ -1,0 +1,443 @@
+.header__inner {
+    position: absolute;
+    top: -90px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 0 2px 0 5px;
+    z-index: 2;
+
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+
+    transform: rotate(-5deg);
+
+    width: 85%;
+    height: max-content;
+}
+
+.header__inner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transform: rotate(5deg);
+
+    background-color: #f4f4f2;
+}
+
+.header__outer {
+    position: absolute;
+    z-index: 1;
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+
+    width: 15%;
+    height: max-content;
+
+    transform: rotate(-5deg);
+}
+
+.header__outer::before {
+    content: "";
+    position: absolute;
+    top: 0;
+
+    width: 100%;
+    height: 100%;
+
+    transform: rotate(5deg);
+
+    background-color: #f4f4f2;
+}
+
+.header__outer.left {
+    top: -45px;
+    left: 0;
+}
+
+.header__outer.right {
+    top: -70px;
+    right: 0;
+
+    flex-wrap: wrap-reverse;
+}
+
+.sprite-icon {
+    display: inline-block;
+    margin: 7px;
+
+    width: 50px;
+    height: 50px;
+
+    transform: scale(0.75);
+
+    background-image: url(../img/icons.png);
+}
+
+.sprite-icon:nth-child(90n+1) {
+    background-position: -32px -23px;
+}
+
+.sprite-icon:nth-child(90n+2) {
+    background-position: -108px -23px;
+}
+
+.sprite-icon:nth-child(90n+3) {
+    background-position: -184px -23px;
+}
+
+.sprite-icon:nth-child(90n+4) {
+    background-position: -261px -23px;
+}
+
+.sprite-icon:nth-child(90n+5) {
+    background-position: -337px -23px;
+}
+
+.sprite-icon:nth-child(90n+6) {
+    background-position: -413px -23px;
+}
+
+.sprite-icon:nth-child(90n+7) {
+    background-position: -490px -23px;
+}
+
+.sprite-icon:nth-child(90n+8) {
+    background-position: -566px -23px;
+}
+
+.sprite-icon:nth-child(90n+9) {
+    background-position: -644px -23px;
+}
+
+.sprite-icon:nth-child(90n+10) {
+    background-position: -32px -107px;
+}
+
+.sprite-icon:nth-child(90n+11) {
+    background-position: -108px -107px;
+}
+
+.sprite-icon:nth-child(90n+12) {
+    background-position: -184px -107px;
+}
+
+.sprite-icon:nth-child(90n+13) {
+    background-position: -261px -107px;
+}
+
+.sprite-icon:nth-child(90n+14) {
+    background-position: -337px -107px;
+}
+
+.sprite-icon:nth-child(90n+15) {
+    background-position: -413px -107px;
+}
+
+.sprite-icon:nth-child(90n+16) {
+    background-position: -490px -107px;
+}
+
+.sprite-icon:nth-child(90n+17) {
+    background-position: -566px -107px;
+}
+
+.sprite-icon:nth-child(90n+18) {
+    background-position: -644px -107px;
+}
+
+.sprite-icon:nth-child(90n+19) {
+    background-position: -32px -192px;
+}
+
+.sprite-icon:nth-child(90n+20) {
+    background-position: -108px -192px;
+}
+
+.sprite-icon:nth-child(90n+21) {
+    background-position: -184px -192px;
+}
+
+.sprite-icon:nth-child(90n+22) {
+    background-position: -261px -192px;
+}
+
+.sprite-icon:nth-child(90n+23) {
+    background-position: -337px -192px;
+}
+
+.sprite-icon:nth-child(90n+24) {
+    background-position: -413px -192px;
+}
+
+.sprite-icon:nth-child(90n+25) {
+    background-position: -490px -192px;
+}
+
+.sprite-icon:nth-child(90n+26) {
+    background-position: -566px -192px;
+}
+
+.sprite-icon:nth-child(90n+27) {
+    background-position: -644px -192px;
+}
+
+.sprite-icon:nth-child(90n+28) {
+    background-position: -32px -277px;
+}
+
+.sprite-icon:nth-child(90n+29) {
+    background-position: -108px -277px;
+}
+
+.sprite-icon:nth-child(90n+30) {
+    background-position: -184px -277px;
+}
+
+.sprite-icon:nth-child(90n+31) {
+    background-position: -261px -277px;
+}
+
+.sprite-icon:nth-child(90n+32) {
+    background-position: -337px -277px;
+}
+
+.sprite-icon:nth-child(90n+33) {
+    background-position: -413px -277px;
+}
+
+.sprite-icon:nth-child(90n+34) {
+    background-position: -490px -277px;
+}
+
+.sprite-icon:nth-child(90n+35) {
+    background-position: -566px -277px;
+}
+
+.sprite-icon:nth-child(90n+36) {
+    background-position: -644px -277px;
+}
+
+.sprite-icon:nth-child(90n+37) {
+    background-position: -32px -365px;
+}
+
+.sprite-icon:nth-child(90n+38) {
+    background-position: -108px -365px;
+}
+
+.sprite-icon:nth-child(90n+39) {
+    background-position: -184px -365px;
+}
+
+.sprite-icon:nth-child(90n+40) {
+    background-position: -261px -365px;
+}
+
+.sprite-icon:nth-child(90n+41) {
+    background-position: -337px -365px;
+}
+
+.sprite-icon:nth-child(90n+42) {
+    background-position: -413px -365px;
+}
+
+.sprite-icon:nth-child(90n+43) {
+    background-position: -490px -365px;
+}
+
+.sprite-icon:nth-child(90n+44) {
+    background-position: -566px -365px;
+}
+
+.sprite-icon:nth-child(90n+45) {
+    background-position: -644px -365px;
+}
+
+.sprite-icon:nth-child(90n+46) {
+    background-position: -32px -450px;
+}
+
+.sprite-icon:nth-child(90n+47) {
+    background-position: -108px -450px;
+}
+
+.sprite-icon:nth-child(90n+48) {
+    background-position: -184px -450px;
+}
+
+.sprite-icon:nth-child(90n+49) {
+    background-position: -261px -450px;
+}
+
+.sprite-icon:nth-child(90n+50) {
+    background-position: -337px -450px;
+}
+
+.sprite-icon:nth-child(90n+51) {
+    background-position: -413px -450px;
+}
+
+.sprite-icon:nth-child(90n+52) {
+    background-position: -490px -450px;
+}
+
+.sprite-icon:nth-child(90n+53) {
+    background-position: -566px -450px;
+}
+
+.sprite-icon:nth-child(90n+54) {
+    background-position: -644px -450px;
+}
+
+.sprite-icon:nth-child(90n+55) {
+    background-position: -32px -535px;
+}
+
+.sprite-icon:nth-child(90n+56) {
+    background-position: -108px -535px;
+}
+
+.sprite-icon:nth-child(90n+57) {
+    background-position: -184px -535px;
+}
+
+.sprite-icon:nth-child(90n+58) {
+    background-position: -261px -535px;
+}
+
+.sprite-icon:nth-child(90n+59) {
+    background-position: -337px -535px;
+}
+
+.sprite-icon:nth-child(90n+60) {
+    background-position: -413px -535px;
+}
+
+.sprite-icon:nth-child(90n+61) {
+    background-position: -490px -535px;
+}
+
+.sprite-icon:nth-child(90n+62) {
+    background-position: -566px -535px;
+}
+
+.sprite-icon:nth-child(90n+63) {
+    background-position: -644px -535px;
+}
+
+.sprite-icon:nth-child(90n+64) {
+    background-position: -32px -620px;
+}
+
+.sprite-icon:nth-child(90n+65) {
+    background-position: -108px -620px;
+}
+
+.sprite-icon:nth-child(90n+66) {
+    background-position: -184px -620px;
+}
+
+.sprite-icon:nth-child(90n+67) {
+    background-position: -261px -620px;
+}
+
+.sprite-icon:nth-child(90n+68) {
+    background-position: -337px -620px;
+}
+
+.sprite-icon:nth-child(90n+69) {
+    background-position: -413px -620px;
+}
+
+.sprite-icon:nth-child(90n+70) {
+    background-position: -490px -620px;
+}
+
+.sprite-icon:nth-child(90n+71) {
+    background-position: -566px -620px;
+}
+
+.sprite-icon:nth-child(90n+72) {
+    background-position: -644px -620px;
+}
+
+.sprite-icon:nth-child(90n+73) {
+    background-position: -32px -705px;
+}
+
+.sprite-icon:nth-child(90n+74) {
+    background-position: -108px -705px;
+}
+
+.sprite-icon:nth-child(90n+75) {
+    background-position: -184px -705px;
+}
+
+.sprite-icon:nth-child(90n+76) {
+    background-position: -261px -705px;
+}
+
+.sprite-icon:nth-child(90n+77) {
+    background-position: -337px -705px;
+}
+
+.sprite-icon:nth-child(90n+78) {
+    background-position: -413px -705px;
+}
+
+.sprite-icon:nth-child(90n+79) {
+    background-position: -490px -705px;
+}
+
+.sprite-icon:nth-child(90n+80) {
+    background-position: -566px -705px;
+}
+
+.sprite-icon:nth-child(90n+81) {
+    background-position: -644px -705px;
+}
+
+.sprite-icon:nth-child(90n+82) {
+    background-position: -32px -790px;
+}
+
+.sprite-icon:nth-child(90n+83) {
+    background-position: -108px -790px;
+}
+
+.sprite-icon:nth-child(90n+84) {
+    background-position: -184px -790px;
+}
+
+.sprite-icon:nth-child(90n+85) {
+    background-position: -261px -790px;
+}
+
+.sprite-icon:nth-child(90n+86) {
+    background-position: -337px -790px;
+}
+
+.sprite-icon:nth-child(90n+87) {
+    background-position: -413px -790px;
+}
+
+.sprite-icon:nth-child(90n+88) {
+    background-position: -490px -790px;
+}
+
+.sprite-icon:nth-child(90n+89) {
+    background-position: -566px -790px;
+}
+
+.sprite-icon:nth-child(90n+90) {
+    background-position: -644px -790px;
+}
