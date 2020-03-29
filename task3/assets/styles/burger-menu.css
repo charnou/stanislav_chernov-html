@@ -55,5 +55,6 @@
 }
 
 .burger-menu__checkbox:checked~.nav-mobile {
+    height: 55rem;
     opacity: 1;
 }
