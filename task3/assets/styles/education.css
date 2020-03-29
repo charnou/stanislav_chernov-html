@@ -1,0 +1,69 @@
+.education {
+    flex-basis: 50%;
+
+    height: 44.4rem;
+
+    font-weight: 300;
+    color: #f1f1f1;
+    background-color: #e4ae58;
+}
+
+.education__cont {
+    width: 100%;
+    height: 100%;
+
+    padding: 4rem 3.3rem 4.1rem 4.2rem;
+}
+
+.education__title {
+    font-size: 4.2rem;
+}
+
+.education__subtitle {
+    margin: 1.4rem 0 3.4rem;
+
+    font-size: 1.65rem;
+}
+
+.education__item {
+    margin-bottom: 0.5rem;
+
+    max-width: 85%;
+}
+
+.education__item-logo {
+    display: inline-block;
+
+    position: relative;
+    top: 1.1rem;
+
+    font-size: 4.3rem;
+}
+
+.education__item-title {
+    display: inline-block;
+
+    margin-left: 2.1rem;
+
+    font-size: 2.6rem;
+}
+
+.education__item-date {
+    display: inline-block;
+
+    margin-left: 0.5rem;
+
+    font-size: 1.7rem;
+    font-weight: 600;
+    
+    color: #886d1e;
+}
+
+.education__item-subtitle {
+    position: relative;
+    left: 7rem;
+    top: 0.2rem;
+
+    font-size: 1.65rem;
+    line-height: 3rem;
+}

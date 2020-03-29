@@ -1,0 +1,25 @@
+.home {
+    position: relative;
+
+    flex-basis: 50%;
+
+    height: 81.9rem;
+
+    background: url("../img/home-img.jpg") no-repeat;
+    background-position: center;
+    background-size: 129rem;
+}
+
+.home__text {
+    position: absolute;
+    top: 2.9rem;
+    left: 17.2rem;
+
+    cursor: default;
+
+    color: #383838;
+    font-size: 2.4rem;
+    letter-spacing: 0.1rem;
+    font-weight: 700;
+    text-shadow: 0.1rem 0.1rem 0.1rem rgba(255, 255, 255, 0.7);
+}

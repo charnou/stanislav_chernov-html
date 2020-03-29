@@ -1,0 +1,9 @@
+.contact-img {
+    flex-basis: 25%;
+
+    height: 61.5rem;
+
+    background: url("../img/contact-img.jpg") no-repeat;
+    background-position: -27.5rem 0;
+    background-size: 92.5rem;
+}

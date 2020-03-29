@@ -1,0 +1,90 @@
+@import "home.css";
+@import "header.css";
+@import "nav.css";
+@import "nav-mobile.css";
+@import "button.css";
+@import "about.css";
+@import "about-img.css";
+@import "skills.css";
+@import "interface-design.css";
+@import "media-strategy.css";
+@import "mobile-app.css";
+@import "coding.css";
+@import "experience-img.css";
+@import "experience.css";
+@import "education.css";
+@import "education-img.css";
+@import "quotes.css";
+@import "contact-form.css";
+@import "contact-img.css";
+@import "contact-info.css";
+@import "footer.css";
+@import "burger-menu.css";
+@import "media.css";
+
+@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900&display=swap');
+
+html {
+    font-size: 10px;
+}
+
+body {
+    margin: 0 auto;
+
+    max-width: 3840px;
+
+    scroll-behavior: smooth;
+
+    font-family: 'Source Sans Pro', sans-serif;
+    background-color: #f0e2d7;
+}
+
+.container {
+    position: absolute;
+    left: 0;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+
+    margin: 0 auto;
+
+    overflow-x: hidden;
+
+    min-width: 148rem;
+    max-width: 148rem;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+*::selection {
+    background-color: rgba(163, 163, 163, 0.5);
+}
+
+h1,
+h2,
+h3 {
+    margin: 0;
+}
+
+@media screen and (max-width:1479px) {
+    html {
+        font-size: 0.68vw;
+    }
+}
+
+@media screen and (max-width:720px) {
+    html {
+        font-size: 2vw;
+    }
+
+    .container {
+        min-width: 100vw;
+        max-width: 100vw;
+    }
+}

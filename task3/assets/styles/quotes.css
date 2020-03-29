@@ -1,0 +1,59 @@
+.quotes {
+    position: relative;
+
+    flex-basis: 100%;
+    height: 48rem;
+
+    text-align: center;
+    font-weight: 300;
+    color: #ffffff;
+
+    background: url("../img/quotes-bg.jpg") no-repeat;
+    background-position: center -7.5rem;
+    background-size: 148rem;
+}
+
+.quotes::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    content: "";
+
+    opacity: 0.71;
+    background-color: #161616;
+}
+
+.quotes__cont {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 12.7rem 30rem 10rem;
+}
+
+.quotes__logo {
+    font-size: 4.1rem;
+
+    transition: color 0.2s;
+}
+
+.quotes:hover .quotes__logo {
+    color: #ffe63a;
+}
+
+.quotes__title {
+    margin-top: 1.9rem;
+
+    font-size: 4.2rem;
+}
+
+.quotes__subtitle {
+    margin-top: 4.5rem;
+
+    font-size: 1.65rem;
+    color: #a0a0a0;
+}
