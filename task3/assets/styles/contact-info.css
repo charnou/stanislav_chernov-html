@@ -42,10 +42,7 @@
 }
 
 .contact-info__item {
-    position: relative;
-    top: -0.5rem;
-    left: -3.8rem;
-    margin-bottom: 1.8rem;
+    margin: 2rem 0 1.8rem;
 
     cursor: pointer;
 

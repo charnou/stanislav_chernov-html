@@ -36,12 +36,16 @@
 }
 
 .quotes__logo {
+    margin: 0 auto;
+
+    width: max-content;
+
     font-size: 4.1rem;
 
     transition: color 0.2s;
 }
 
-.quotes:hover .quotes__logo {
+.quotes__logo:hover {
     color: #ffe63a;
 }
 

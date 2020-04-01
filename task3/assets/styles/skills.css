@@ -58,7 +58,7 @@
     margin-top: 1.2rem;
 }
 
-.skills__stat-item-1 .skills__stat-line:after {
+.skills__stat-line--frontend:after {
     display: block;
     content: "";
 
@@ -68,7 +68,7 @@
     background-color: #0e0e0e;
 }
 
-.skills__stat-item-2 .skills__stat-line:after {
+.skills__stat-line--backend:after {
     display: block;
     content: "";
 
@@ -78,7 +78,7 @@
     background-color: #0e0e0e;
 }
 
-.skills__stat-item-3 .skills__stat-line:after {
+.skills__stat-line--htmlcss:after {
     display: block;
     content: "";
 

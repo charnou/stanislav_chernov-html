@@ -20,14 +20,14 @@
         </section>
         <header class="header" id="home">
             <nav class="nav header__nav">
-                <a href="#home" class="nav__item">Home</a>
-                <a href="#about" class="nav__item">About me</a>
-                <a href="#experiences" class="nav__item">Experiences</a>
-                <a href="#testimonial" class="nav__item">Testimonial</a>
-                <a href="#contact" class="nav__item">Contact</a>
+                <a class="nav__item" href="#home">Home</a>
+                <a class="nav__item" href="#about">About me</a>
+                <a class="nav__item" href="#experiences">Experiences</a>
+                <a class="nav__item" href="#testimonial">Testimonial</a>
+                <a class="nav__item" href="#contact">Contact</a>
             </nav>
             <div class="burger-menu">
-                <input type="checkbox" class="burger-menu__checkbox">
+                <input class="burger-menu__checkbox" type="checkbox">
                 <div class="burger-menu__icon--burger">
                     <i class="fa fa-bars" aria-hidden="true"></i>
                 </div>
@@ -35,11 +35,11 @@
                     <i class="fa fa-times" aria-hidden="true"></i>
                 </div>
                 <nav class="nav-mobile">
-                    <a href="#home" class="nav-mobile__item">Home</a>
-                    <a href="#about" class="nav-mobile__item">About me</a>
-                    <a href="#experiences" class="nav-mobile__item">Experiences</a>
-                    <a href="#testimonial" class="nav-mobile__item">Testimonial</a>
-                    <a href="#contact" class="nav-mobile__item">Contact</a>
+                    <a class="nav-mobile__item" href="#home">Home</a>
+                    <a class="nav-mobile__item" href="#about">About me</a>
+                    <a class="nav-mobile__item" href="#experiences">Experiences</a>
+                    <a class="nav-mobile__item" href="#testimonial">Testimonial</a>
+                    <a class="nav-mobile__item" href="#contact">Contact</a>
                 </nav>
             </div>
             <div class="header__text">
@@ -89,20 +89,20 @@
                 <h3 class="skills__subtitle">
                     Photoshop . HTML CSS JS . Web Design
                 </h3>
-                <div class="skills__stat-item skills__stat-item-1">
+                <div class="skills__stat-item">
                     <span class="skills__stat-text">Frontend Design</span>
                     <span class="skills__stat-text">90%</span>
-                    <span class="skills__stat-line"></span>
+                    <span class="skills__stat-line skills__stat-line--frontend"></span>
                 </div>
-                <div class="skills__stat-item skills__stat-item-2">
+                <div class="skills__stat-item">
                     <span class="skills__stat-text">Backend processing</span>
                     <span class="skills__stat-text">70%</span>
-                    <span class="skills__stat-line"></span>
+                    <span class="skills__stat-line skills__stat-line--backend"></span>
                 </div>
-                <div class="skills__stat-item skills__stat-item-3">
+                <div class="skills__stat-item">
                     <span class="skills__stat-text">HTML5 & CSS3</span>
                     <span class="skills__stat-text">80%</span>
-                    <span class="skills__stat-line"></span>
+                    <span class="skills__stat-line skills__stat-line--htmlcss"></span>
                 </div>
             </div>
         </section>
@@ -267,11 +267,11 @@
                     <div class="contact-form__subtitle">
                         Integer ut consectetur est. In cursus orci non ipsum gravida dignissim.
                     </div>
-                    <input type="text" class="contact-form__name" placeholder="Your Name" required>
-                    <input type="email" class="contact-form__email" placeholder="Your Email" required>
-                    <textarea name="" id="" class="contact-form__message" placeholder="Write your message..."
+                    <input class="contact-form__name" type="text" placeholder="Your Name" required>
+                    <input class="contact-form__email" type="email" placeholder="Your Email" required>
+                    <textarea class="contact-form__message" name="" id="" placeholder="Write your message..."
                         required></textarea>
-                    <input type="submit" class="contact-form__button" value="Send">
+                    <input class="contact-form__button" type="submit" value="Send">
                 </form>
             </div>
         </section>
@@ -288,52 +288,60 @@
                 <div class="contact-info__title">
                     Contact.
                 </div>
-                <ul class="contact-info__list">
+                <div class="contact-info__list">
                     <a href="tel:01-0110-0220">
-                        <li class="contact-info__item contact-info__item--phone">
+                        <div class="contact-info__item contact-info__item--phone">
                             <i class="fa fa-phone" aria-hidden="true"></i>
-                            01-0110-0220
-                        </li>
+                            <span>
+                                01-0110-0220
+                            </span>
+                        </div>
                     </a>
                     <a href="mailto:hello@company.co">
-                        <li class="contact-info__item contact-info__item--email">
-                            <i class="fa fa-envelope-o" aria-hidden="true"></i>hello@company.co
-                        </li>
+                        <div class="contact-info__item contact-info__item--email">
+                            <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                            <span>
+                                hello@company.co
+                            </span>
+                        </div>
                     </a>
                     <a href="https://www.company.co/" target="_blank">
-                        <li class="contact-info__item contact-info__item--website">
+                        <div class="contact-info__item contact-info__item--website">
                             <i class="fa fa-globe" aria-hidden="true"></i>
-                            </i>company.co
-                        </li>
+                            <span>
+                                company.co
+                            </span>
+                        </div>
                     </a>
-                </ul>
+                </div>
             </div>
         </section>
         <footer class="footer">
             <div class="footer__cont">
                 <div class="footer__copy">
                     Copyright &copy; 2016 Your Company | Design:
-                    <a href="https://templatemo.com/" class="footer__copy--orange">
+                    <a class="footer__copy--orange" href="https://templatemo.com/">
                         templatemo
                     </a>
                 </div>
-                <a href="https://www.facebook.com/" target="_blank" class="footer__icon">
+                <a class="footer__icon" href="https://www.facebook.com/" target="_blank">
                     <i class="fa fa-facebook" aria-hidden="true"></i>
                 </a>
-                <a href="https://twitter.com/" target="_blank" class="footer__icon">
+                <a class="footer__icon" href="https://twitter.com/" target="_blank">
                     <i class="fa fa-twitter" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.google.com/" target="_blank" class="footer__icon">
+                <a class="footer__icon" href="https://www.google.com/" target="_blank">
                     <i class="fa fa-google-plus" aria-hidden="true"></i>
                 </a>
-                <a href="https://dribbble.com/" target="_blank" class="footer__icon">
+                <a class="footer__icon" href="https://dribbble.com/" target="_blank">
                     <i class="fa fa-dribbble" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.linkedin.com/" target="_blank" class="footer__icon">
+                <a class="footer__icon" href="https://www.linkedin.com/" target="_blank">
                     <i class="fa fa-linkedin" aria-hidden="true"></i>
                 </a>
             </div>
         </footer>
+        
     </div>
 
 </body>

@@ -63,31 +63,63 @@
     }
 
     .interface-design {
-        flex-basis: 50%;
+        flex-basis: 100%;
         order: 8;
 
-        max-width: 50vw;
+        max-width: 100vw;
+    }
+
+    .interface-design__title {
+        font-size: 3.5rem;
+    }
+
+    .interface-design__subtitle {
+        font-size: 2.2rem;
     }
 
     .media-strategy {
-        flex-basis: 50%;
+        flex-basis: 100%;
         order: 6;
 
-        max-width: 50vw;
+        max-width: 100vw;
+    }
+
+    .media-strategy__title {
+        font-size: 3.5rem;
+    }
+
+    .media-strategy__subtitle {
+        font-size: 2.2rem;
     }
 
     .mobile-app {
-        flex-basis: 50%;
+        flex-basis: 100%;
         order: 7;
 
-        max-width: 50vw;
+        max-width: 100vw;
+    }
+
+    .mobile-app__title {
+        font-size: 3.5rem;
+    }
+
+    .mobile-app__subtitle {
+        font-size: 2.2rem;
     }
 
     .coding {
-        flex-basis: 50%;
+        flex-basis: 100%;
         order: 9;
 
-        max-width: 50vw;
+        max-width: 100vw;
+    }
+
+    .coding__title {
+        font-size: 3.5rem;
+    }
+
+    .coding__subtitle {
+        font-size: 2.2rem;
     }
 
     .experience-img {
