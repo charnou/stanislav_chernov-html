@@ -1,0 +1,69 @@
+.header {
+    flex-basis: 50%;
+
+    height: 81.9rem;
+
+    background-color: #f0e2d7;
+}
+
+.header__nav {
+    margin: 3.6rem 0;
+
+    padding-left: 9.9rem;
+}
+
+.header__burger-menu {
+    position: absolute;
+    top: 4rem;
+    right: 3rem;
+    z-index: 2;
+}
+
+.header__text {
+    margin: 18.5rem 0 0 4.7rem;
+}
+
+.header__suptitle {
+    position: relative;
+
+    text-transform: uppercase;
+
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.2rem;
+
+    color: #aaaaaa;
+}
+
+.header__title {
+    margin: 2.1rem 0 1.25rem;
+
+    font-size: 4.2rem;
+    font-weight: 300;
+    line-height: 4.6rem;
+
+    color: #363636;
+}
+
+.header__title--bold {
+    font-weight: 400;
+    color: #222222;
+}
+
+.header__subtitle {
+    position: relative;
+    left: -0.1rem;
+    margin-top: 1.9rem;
+
+    width: 96%;
+
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.8rem;
+
+    color: #a0a0a0;
+}
+
+.header__button {
+    margin: 3.5rem 0 0 4.65rem;
+}

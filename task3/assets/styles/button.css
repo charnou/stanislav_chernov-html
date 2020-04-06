@@ -1,0 +1,30 @@
+.button {
+    padding: 1.4rem 3.5rem;
+
+    border: 0.3rem solid #363636;
+    border-radius: 2.5rem;
+    background: transparent;
+    outline: none;
+
+    user-select: none;
+    cursor: pointer;
+
+    color: #474747;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+    font-size: 1.1rem;
+    font-weight: 800;
+
+    transition: color 0.1s, background-color 0.1s, border-color 0.1s;
+}
+
+.button:hover {
+    color: #fff;
+    border-color: transparent;
+    background-color: #e4ae58;
+}
+
+.button:active {
+    color: #e2e2e2;
+    background-color: #0a09049c;
+}

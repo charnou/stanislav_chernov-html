@@ -1,0 +1,9 @@
+.experience-img {
+    flex-basis: 50%;
+
+    height: 38.6rem;
+
+    background: url("../img/experience-img.jpg") no-repeat;
+    background-position: -10rem 0;
+    background-size: 93rem;
+}

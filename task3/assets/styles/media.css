@@ -1,0 +1,217 @@
+@media screen and (max-width:720px) {
+    .home {
+        flex-basis: 100%;
+        order: 2;
+
+        max-width: 100vw;
+        height: 40rem;
+
+        background-size: 90rem;
+        background-position: -10rem -5rem;
+    }
+
+    .home__text {
+        top: 3rem;
+        left: 4rem;
+
+        font-size: 4rem;
+    }
+
+    .header {
+        flex-basis: 100%;
+        order: 1;
+
+        max-width: 100vw;
+        height: 55rem;
+    }
+
+    .header__text {
+        margin-top: 2rem;
+    }
+
+    .nav {
+        display: none;
+    }
+
+    .burger-menu {
+        display: block;
+    }
+
+    .about {
+        flex-basis: 100%;
+        order: 3;
+
+        max-width: 100vw;
+        height: 38rem;
+    }
+
+    .about-img {
+        flex-basis: 100%;
+        order: 4;
+
+        max-width: 100vw;
+        height: 25rem;
+        background-size: 100rem;
+        background-position: -10rem -1rem;
+    }
+
+    .skills {
+        flex-basis: 100%;
+        order: 5;
+
+        max-width: 100vw;
+    }
+
+    .interface-design {
+        flex-basis: 100%;
+        order: 8;
+
+        max-width: 100vw;
+    }
+
+    .interface-design__title {
+        font-size: 3.5rem;
+    }
+
+    .interface-design__subtitle {
+        font-size: 2.2rem;
+    }
+
+    .media-strategy {
+        flex-basis: 100%;
+        order: 6;
+
+        max-width: 100vw;
+    }
+
+    .media-strategy__title {
+        font-size: 3.5rem;
+    }
+
+    .media-strategy__subtitle {
+        font-size: 2.2rem;
+    }
+
+    .mobile-app {
+        flex-basis: 100%;
+        order: 7;
+
+        max-width: 100vw;
+    }
+
+    .mobile-app__title {
+        font-size: 3.5rem;
+    }
+
+    .mobile-app__subtitle {
+        font-size: 2.2rem;
+    }
+
+    .coding {
+        flex-basis: 100%;
+        order: 9;
+
+        max-width: 100vw;
+    }
+
+    .coding__title {
+        font-size: 3.5rem;
+    }
+
+    .coding__subtitle {
+        font-size: 2.2rem;
+    }
+
+    .experience-img {
+        flex-basis: 100%;
+        order: 10;
+
+        max-width: 100vw;
+        height: 20rem;
+    }
+
+    .experience {
+        flex-basis: 100%;
+        order: 11;
+
+        max-width: 100vw;
+    }
+
+    .experience__cont {
+        padding: 3rem 1rem 3rem 2rem;
+    }
+
+    .education-img {
+        flex-basis: 100%;
+        order: 12;
+
+        max-width: 100vw;
+        height: 20rem;
+    }
+
+    .education {
+        flex-basis: 100%;
+        order: 13;
+
+        max-width: 100vw;
+    }
+
+    .education__cont {
+        padding: 3rem 1rem 3rem 2rem;
+    }
+
+    .quotes {
+        flex-basis: 100%;
+        order: 14;
+
+        max-width: 100vw;
+        height: 35rem;
+    }
+
+    .quotes__cont {
+        padding: 6rem 1rem;
+    }
+
+    .quotes__title {
+        font-size: 2rem;
+    }
+
+    .quotes__subtitle {
+        font-size: 1.4rem;
+    }
+
+    .contact-form {
+        flex-basis: 100%;
+        order: 15;
+
+        max-width: 100vw;
+    }
+
+    .contact-img {
+        flex-basis: 100%;
+        order: 16;
+
+        max-width: 100vw;
+        height: 25rem;
+    }
+
+    .contact-info {
+        flex-basis: 100%;
+        order: 17;
+
+        max-width: 100vw;
+        height: 37rem;
+    }
+
+    .footer {
+        flex-basis: 100%;
+        order: 18;
+
+        max-width: 100vw;
+        height: 20rem;
+    }
+
+    .footer__cont {
+        padding: 6rem 0;
+    }
+}

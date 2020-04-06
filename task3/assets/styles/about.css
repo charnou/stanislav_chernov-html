@@ -1,0 +1,42 @@
+.about {
+    flex-basis: 50%;
+    display: flex;
+    justify-content: center;
+
+    height: 34.3rem;
+
+    background-color: #fff;
+}
+
+.about__cont {
+    width: 100%;
+    height: 100%;
+
+    padding: 4rem 3.25rem;
+}
+
+.about__title {
+    margin-bottom: 1.4rem;
+
+    font-size: 4.2rem;
+    font-weight: 300;
+
+    color: #363636;
+}
+
+.about__subtitle {
+    margin-bottom: 3.2rem;
+
+    font-size: 1.6rem;
+    font-weight: 200;
+    
+    color: #e4ae58;
+}
+
+.about__text {
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 2.8rem;
+
+    color: #a0a0a0;
+}

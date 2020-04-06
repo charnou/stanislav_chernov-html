@@ -1,0 +1,30 @@
+.nav-mobile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 0;
+    height: 0;
+
+    opacity: 0;
+    transition: height 0.4s;
+    user-select: none;
+
+    background-color: #f0e2d7;
+}
+
+.nav-mobile__item {
+    margin-top: 4rem;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 600;
+    transition: color 0.1s;
+    color: #757575;
+}
+
+.nav-mobile__item:active {
+    color: #7c5e2d;
+}

@@ -1,0 +1,22 @@
+.nav {
+    user-select: none;
+}
+
+.nav__item {
+    margin-right: 3rem;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 600;
+    transition: color 0.1s;
+    color: #757575;
+}
+
+.nav__item:hover {
+    color: #e4ae58;
+}
+
+.nav__item:active {
+    color: #7c5e2d;
+}

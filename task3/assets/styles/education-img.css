@@ -1,0 +1,9 @@
+.education-img {
+    flex-basis: 50%;
+
+    height: 44.4rem;
+
+    background: url("../img/education-img.jpg") no-repeat;
+    background-position: -8.2rem 0;
+    background-size: 92rem;
+}
