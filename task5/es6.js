@@ -17,7 +17,7 @@ class Animal {
         console.log(`У зверька "${this.name}" цвет меха - ${this.color}`)
     }
     isRun() {
-        if (this.isRunning == 1) {
+        if (this.isRunning) {
             console.log(`${this.name} бежит, и его ${this.color} мех развевается!`)
         } else {
             console.log(`${this.name} стоит.`)
@@ -43,7 +43,7 @@ class Racoon extends Animal {
         console.log(`${this.name} вроде успокоился...`)
     }
     isWash() {
-        if (this.isWashing == 1) {
+        if (this.isWashing) {
             console.log(`${this.name} моет что-то, и его ${this.color} мех очень мокрый!`)
         } else {
             console.log(`${this.name} ничего, к счастью, не моет...`)
@@ -65,7 +65,7 @@ class Beaver extends Animal {
         console.log(`${this.name} пошёл отдыхать.`)
     }
     isBuild() {
-        if (this.isBuilding == 1) {
+        if (this.isBuilding) {
             console.log(`${this.name} сооружает плотину, и его ${this.color} мех тут совершенно не причём!`)
         } else {
             console.log(`${this.name} сейчас отдыхает.`)
