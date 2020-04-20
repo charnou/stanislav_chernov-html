@@ -1,0 +1,91 @@
+.start-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    padding: 1.5rem 2.5rem;
+
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+
+    text-transform: uppercase;
+    color: #b49721d0;
+    font-size: 5rem;
+
+    transition: .3s color;
+}
+
+.start-btn--hover {
+    color: #ffd321;
+}
+
+.start__border1 {
+    position: absolute;
+    display: block;
+
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 0.2rem;
+    background: linear-gradient(90deg, transparent, #ffd321);
+}
+
+.start__border1--hover {
+    left: 100%;
+
+    transition: .6s;
+}
+
+.start__border2 {
+    position: absolute;
+    display: block;
+
+    bottom: -100%;
+    right: 0;
+    width: 0.2rem;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #ffd321);
+}
+
+.start__border2--hover {
+    bottom: 100%;
+
+    transition: .6s;
+}
+
+.start__border3 {
+    position: absolute;
+    display: block;
+
+    bottom: 0;
+    right: -100%;
+    width: 100%;
+    height: 0.2rem;
+    background: linear-gradient(90deg, transparent, #ffd321);
+}
+
+.start__border3--hover {
+    right: 100%;
+
+    transition: .6s;
+}
+
+.start__border4 {
+    position: absolute;
+    display: block;
+
+    bottom: 100%;
+    left: 0;
+    width: 0.2rem;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, #ffd321);
+}
+
+.start__border4--hover {
+    bottom: -100%;
+
+    transition: .6s;
+}
