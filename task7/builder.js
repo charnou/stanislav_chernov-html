@@ -1,16 +1,15 @@
-console.log(`%csetHeight(num) - set height of the building;
+console.log(`%cHouseBuilder:
+setHeight(num) - set height of the building;
 setWidth(num) - set width of the building;
-setRoofType(1, 2, 3) - choose a type of the roof;
+addRoof('Wood', 'Metal' and 'Asphalt') - choose a type of the roof;
 addWindows(num) - add a certain amount of windows into the building;
 addDoors(num) - add a certain amount of doors into the building (will only builded on the first floor);
 build() - build the house. Final step.
 
-Try to add more objects than it can fit.
-Use "new House()" to create an object.
+Director:
+drawHouse(Object) - creating a blue print from an object made by 'HouseBuilder'.
 
-Example:
-let houseExample = new House().setHeight(2).setWidth(5).addWindows(7).addDoors(3).setRoofType(3).build();
-console.log(houseExample);
+Examples:
 `, 'background: #04001f; color: #e8c720 ; font-size: 16px;')
 
 class HouseBuilder {
@@ -20,100 +19,139 @@ class HouseBuilder {
     }
 
     setHeight(height) {
-        if (height < 1 || height % 1 != 0) {
-            console.log('Invalid house height. Will be changed into 1.')
-            this.height = 1;
-        } else {
-            this.height = height;
-        }
+        this.height = height;
         return this;
     }
 
     setWidth(width) {
-        if (width < 2 || width % 1 != 0) {
-            console.log('Invalid house width. Will be changed into 2.')
-            this.width = 2;
-        } else {
-            this.width = width;
-        }
+        this.width = width;
         return this;
     }
 
-    setRoofType(type) {
-        if (type < 1 || type > 3 || type % 1 != 0) {
-            console.log('Invalid roof type number. Will be changed into defaul.')
-            this.roofType = '▓';
-        } else if (type == 1) {
-            this.roofType = '▓';
-        } else if (type == 2) {
-            this.roofType = '▒';
-        } else if (type == 3) {
-            this.roofType = '░';
+    addRoof(type) {
+        const roofTypes = {
+            WOOD: '░',
+            METAL: '▒',
+            ASPHALT: '▓',
+        }
+        Object.freeze(roofTypes);
+
+        type = type.toUpperCase()
+        this.roofType = roofTypes[type];
+        if (this.roofType === undefined) {
+            console.error(`Invalid '${type}' ROOF TYPE. Will be changed into default 'Metal'.`)
+            this.roofType = roofTypes.METAL;
         }
         return this;
     }
 
     addWindows(windows) {
-        if (windows < 1 || windows % 1 != 0) {
-            console.log('Invalid windows number. Will be changed into 1.')
-            this.windows = 1;
-        } else {
-            this.windows = windows;
-        }
+        this.windows = windows;
         return this;
     }
 
     addDoors(doors) {
-        if (doors < 1 || doors % 1 != 0) {
-            console.log('Invalid doors number. Will be changed into 1.')
-            this.doors = 1;
-        } else {
-            this.doors = doors;
-        }
+        this.doors = doors;
         return this;
     }
 
+    validateHeight() {
+        if (this.height < 2) {
+            console.error('Invalid HEIGHT. Will be changed into 2.')
+            this.height = 2;
+        } else if (this.height > 2 && this.height % 1 != 0) {
+            this.height = Math.floor(this.height);
+            console.error(`Invalid HEIGHT. Will be changed into ${this.height}.`)
+        }
+    }
+
+    validateWidth() {
+        if (this.width < 2) {
+            console.error('Invalid WIDTH. Will be changed into 2.')
+            this.width = 2;
+        } else if (this.width > 2 && this.width % 1 != 0) {
+            this.width = Math.floor(this.width);
+            console.error(`Invalid WIDTH. Will be changed into ${this.width}.`)
+        }
+    }
+
+    validateWindows() {
+        if (this.windows < 0) {
+            console.error('Invalid WINDOWS NUMBER. Will be changed into 1.')
+            this.windows = 1;
+        } else if (this.windows > 0 && this.windows % 1 != 0) {
+            this.windows = Math.floor(this.windows);
+            console.error(`Invalid WINDOWS NUMBER. Will be changed into ${this.windows}.`)
+        }
+    }
+
+    validateDoors() {
+        if (this.doors < 0) {
+            console.error('Invalid DOORS NUMBER. Will be changed into 1.')
+            this.doors = 1;
+        } else if (this.doors > 0 && this.doors % 1 != 0) {
+            this.doors = Math.floor(this.doors);
+            console.error(`Invalid DOORS NUMBER. Will be changed into ${this.doors}.`)
+        }
+    }
+
     build() {
+        this.validateHeight();
+        this.validateWidth();
+        this.validateWindows();
+        this.validateDoors();
+
+        return this;
+    }
+}
+
+class Director {
+
+    drawHouse(house) {
         let roof = '';
         let cascade = '';
         let result = [];
-        let heightInSymbols = this.height * 5;
-        let widthInSymbols = this.width * 9;
-        let roofHeight = Math.floor(this.width * 2.5);
-        if (roofHeight > 6) {roofHeight = 6;}
-        let windowsTotal = this.windows;
+        let heightInSymbols = house.height * 5;
+        let widthInSymbols = house.width * 9;
+        let roofHeight = Math.floor(house.width * 2.5);
+        if (roofHeight > 6) {
+            roofHeight = 6;
+        }
+        let windowsTotal = house.windows;
         let windowsNum1 = 0;
         let windowsNum2 = 0;
-        let doorsNum1 = this.doors;
-        let doorsNum2 = this.doors;
-        let doorsNum3 = this.doors;
-        let doorsNum4 = this.doors;
+        let doorsNum1 = house.doors;
+        let doorsNum2 = house.doors;
+        let doorsNum3 = house.doors;
+        let doorsNum4 = house.doors;
 
-        for (let i = 0; i < roofHeight; i++) {
-            if (i == 0) {
-                for (let j = 0; j < widthInSymbols; j++) {
-                    if (j + 1 == widthInSymbols) {
-                        roof += `${this.roofType}\n`;
-                    } else {
-                        roof += `${this.roofType}`;
+        if (house.roofType != undefined) {
+            for (let i = 0; i < roofHeight; i++) {
+                if (i == 0) {
+                    for (let j = 0; j < widthInSymbols; j++) {
+                        if (j + 1 == widthInSymbols) {
+                            roof += `${house.roofType}\n`;
+                        } else {
+                            roof += `${house.roofType}`;
+                        }
                     }
-                }
-            } else {
-                for (let j = 0; j < widthInSymbols; j++) {
-                    if (j + 1 == widthInSymbols) {
-                        roof += ` ${'\n'}`;
-                    } else if (j < widthInSymbols - i * 2 && j > i * 2 - 1) {
-                        roof += `${this.roofType}`;
-                    } else {
-                        roof += ` `;
+                } else {
+                    for (let j = 0; j < widthInSymbols; j++) {
+                        if (j + 1 == widthInSymbols) {
+                            roof += ` ${'\n'}`;
+                        } else if (j < widthInSymbols - i * 2 && j > i * 2 - 1) {
+                            roof += `${house.roofType}`;
+                        } else {
+                            roof += ` `;
+                        }
                     }
                 }
             }
+            roof = roof.split('')
+            roof = roof.reverse();
+            roof.push('\n')
+            roof = roof.join('')
         }
-        roof = roof.split('')
-        roof = roof.reverse();
-        roof.push('\n')
-        roof = roof.join('')
 
         for (let i = 0; i < heightInSymbols; i++) {
             if (i == 0) {
@@ -154,7 +192,7 @@ class HouseBuilder {
                         cascade += '  │°  │  ';
                         doorsNum2 -= 1;
                         j += 9;
-                    } else if (this.windows == undefined || windowsTotal == 0) {
+                    } else if (house.windows == undefined || windowsTotal == 0) {
                         cascade += ' ';
                         j++;
                     } else if (windowsTotal > 0) {
@@ -194,7 +232,7 @@ class HouseBuilder {
                         cascade += '  │   │  ';
                         doorsNum3 -= 1;
                         j += 9;
-                    } else if (this.windows == undefined || windowsNum1 == 0) {
+                    } else if (house.windows == undefined || windowsNum1 == 0) {
                         cascade += ' ';
                         j++;
                     } else if (windowsNum1 > 0) {
@@ -234,7 +272,7 @@ class HouseBuilder {
                         cascade += '  ┌───┐  ';
                         doorsNum4 -= 1;
                         j += 9;
-                    } else if (this.windows == undefined || windowsNum2 == 0) {
+                    } else if (house.windows == undefined || windowsNum2 == 0) {
                         cascade += ' ';
                         j++;
                     } else if (windowsNum2 > 0) {
@@ -259,7 +297,7 @@ class HouseBuilder {
             } else if (i % 5 === 0 + 1) {
                 cascade += `│ `;
                 for (let j = 2; j < widthInSymbols - 2;) {
-                    if (this.windows == undefined || windowsTotal == 0) {
+                    if (house.windows == undefined || windowsTotal == 0) {
                         cascade += ' ';
                         j++;
                     } else if (windowsTotal > 0) {
@@ -287,7 +325,7 @@ class HouseBuilder {
             } else if (i % 5 === 0 + 2) {
                 cascade += `│ `;
                 for (let j = 2; j < widthInSymbols - 2;) {
-                    if (this.windows == undefined || windowsNum1 == 0) {
+                    if (house.windows == undefined || windowsNum1 == 0) {
                         cascade += ' ';
                         j++;
                     } else if (windowsNum1 > 0) {
@@ -315,7 +353,7 @@ class HouseBuilder {
             } else if (i % 5 === 0 + 3) {
                 cascade += `│ `;
                 for (let j = 2; j < widthInSymbols - 2;) {
-                    if (this.windows == undefined || windowsNum2 == 0) {
+                    if (house.windows == undefined || windowsNum2 == 0) {
                         cascade += ' ';
                         j++;
                     } else if (windowsNum2 > 0) {
@@ -356,18 +394,46 @@ class HouseBuilder {
             }
         }
         result = result.join('');
-        if (doorsNum1 > 0) {
-            console.error(doorsNum1 + ' door(s) wasnt added into the building.')
-        }
-        if (windowsTotal > 0) {
-            console.error(windowsTotal + ' window(s) wasnt added into the building.')
-        }
-        return this.house = roof + result;
+
+        (function unaddedObjects() {
+            if (doorsNum1 > 0) {
+                console.error(doorsNum1 + ' door(s) wasnt added into the building. Check the sizes!')
+            }
+            if (windowsTotal > 0) {
+                console.error(windowsTotal + ' window(s) wasnt added into the building. Check the sizes!')
+            }
+        })();
+
+        return roof + result;
     }
+
 }
 
-class House extends HouseBuilder {
-    constructor() {
-        super();
-    }
-}
+//EXAMPLES
+const villageHouse = new HouseBuilder()
+    .setHeight(2)
+    .setWidth(3)
+    .addRoof('wood')
+    .addDoors(2)
+    .addWindows(4)
+    .build();
+
+const urbanHouse = new HouseBuilder()
+    .setHeight(5)
+    .setWidth(5)
+    .addDoors(3)
+    .addWindows(22)
+    .build();
+
+const skyScraper = new HouseBuilder()
+    .setHeight(20)
+    .setWidth(5)
+    .addRoof('asphalt')
+    .addDoors(5)
+    .addWindows(95)
+    .build();
+
+console.log('Village House \n' + new Director().drawHouse(villageHouse));
+console.log('Urban House \n' + new Director().drawHouse(urbanHouse));
+console.log('SkyScrapper House \n' + new Director().drawHouse(skyScraper));
+// ./EXAMPLES
