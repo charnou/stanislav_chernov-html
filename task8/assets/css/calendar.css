@@ -12,6 +12,7 @@
     height: 38.5rem;
 
     opacity: 0;
+    user-select: none;
 
     font-size: 1.7rem;
     color: #cfcfcf;
@@ -21,12 +22,24 @@
     transition: opacity 1s ease;
 }
 
-.calendar--active {
+.calendar--loaded {
     opacity: 1;
 }
 
 .calendar__month {
     margin-right: 1rem;
+
+    cursor: pointer;
+}
+
+.calendar__year {
+    cursor: pointer;
+}
+
+.calendar__month--active,
+.calendar__year--active {
+    color: #00cc6a;
+    transition: 0.1s;
 }
 
 .calendar__prev-month {
@@ -37,7 +50,6 @@
     top: 1.5rem;
 
     cursor: pointer;
-    user-select: none;
 
     transform: rotate(135deg);
 }
@@ -50,7 +62,6 @@
     top: 1rem;
 
     cursor: pointer;
-    user-select: none;
 
     transform: rotate(-45deg);
 }
@@ -62,8 +73,6 @@
     margin: 3rem 0 1rem;
 
     text-align: center;
-
-    user-select: none;
 }
 
 .calendar__grid {
@@ -81,12 +90,8 @@
     transition: 0.1s;
 }
 
-.calendar__grid-item--grey {
-    padding: 1.3rem 0;
-
-    color: #5a5a5a;
-
-    transition: 0.1s;
+.calendar__grid-item--weekend {
+    background-color: rgba(0, 204, 105, 0.03);
 }
 
 .calendar__grid-item--current {
@@ -96,10 +101,7 @@
     justify-content: center;
     align-items: center;
 
-    color: #f5f5f5;
-    background-color: #00cc6a;
-
-    transition: 0.1s;
+    background-color: rgba(75, 75, 75, 0.4);
 }
 
 .calendar__grid-item--current::after {
@@ -112,7 +114,39 @@
 
     pointer-events: none;
 
+    border: 0.3rem solid #262627ad;
+}
+
+.calendar__grid-item--grey {
+    color: #5a5a5a;
+}
+
+.calendar__grid-item--highlight {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    color: #f5f5f5;
+    background-color: #00cc6a;
+
+    transition: 0.2s;
+}
+
+.calendar__grid-item--highlight::after {
+    content: " ";
+    position: absolute;
+    z-index: 1;
+
+    width: 90%;
+    height: 90%;
+
+    pointer-events: none;
+
     border: 0.3rem solid #262627;
+
+    transition: 0.2s;
 }
 
 .calendar__grid-item:hover {
@@ -128,17 +162,9 @@
     background: #5a5a5a;
 }
 
-.calendar__grid-item--current:hover {
+.calendar__grid-item--highlight:hover {
     cursor: pointer;
 
     color: #dfdfdf;
     background: #00964d;
-}
-
-.calendar__grid-item--grey::selection {
-    color: #000000;
-}
-
-.calendar__grid-item--current::selection {
-    color: #ffd321;
 }

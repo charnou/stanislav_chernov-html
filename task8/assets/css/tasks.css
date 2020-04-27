@@ -1,0 +1,62 @@
+.tasks {
+    position: absolute;
+    bottom: 12rem;
+    right: 19rem;
+
+    width: 0;
+    height: .5rem;
+
+    background-color: #00cc6a;
+    transition: .6s ease;
+}
+
+.tasks--loaded {
+    height: 21.3rem;
+
+    padding: 1rem 1.2rem;
+}
+
+.tasks--highlight {
+    bottom: 22rem;
+
+    height: 30rem;
+}
+
+.tasks__title {
+    display: inline-block;
+    margin: 0;
+
+    opacity: 0;
+
+    font-size: 1.6rem;
+    transition: .6s ease;
+}
+
+.tasks__title--active {
+    opacity: 1;
+}
+
+.tasks__plus-item {
+    display: inline-block;
+    margin-left: 23.5rem;
+
+    opacity: 0;
+
+    cursor: pointer;
+
+    font-size: 2rem;
+
+    transition: color .1s, opacity .6s ease;
+}
+
+.tasks__plus-item--active {
+    opacity: 1;
+}
+
+.tasks__plus-item:hover {
+    color: #525252
+}
+
+.tasks__plus-item:active {
+    color: #0f0f0f
+}

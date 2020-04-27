@@ -20,34 +20,76 @@ window.addEventListener('load', () => {
   calendar.appendChild(calendarWeek);
   let week;
   for (let i = 0; i < 7; i++) {
-    (i == 0) ? week = 'Su':
-      (i == 1) ? week = 'Mo' :
-      (i == 2) ? week = 'Tu' :
-      (i == 3) ? week = 'We' :
-      (i == 4) ? week = 'Th' :
-      (i == 5) ? week = 'Fr' :
-      week = 'Sa';
+    (i == 0) ? week = 'Mo':
+      (i == 1) ? week = 'Tu' :
+      (i == 2) ? week = 'We' :
+      (i == 3) ? week = 'Th' :
+      (i == 4) ? week = 'Fr' :
+      (i == 5) ? week = 'Sa' :
+      week = 'Su';
     let w = document.createElement('div');
     calendarWeek.appendChild(w).innerHTML = week;
   }
 
   let time = new Date().getTime();
 
+  let monthToChange = true;
+
+  function nextMonth() {
+    if (monthToChange) {
+      time = new Date(time).setMonth(new Date(time).getMonth() + 1);
+    } else {
+      time = new Date(time).setFullYear(new Date(time).getFullYear() + 1);
+    }
+    time = new Date(time).setDate(1);
+  }
+
+  function prevMonth() {
+    if (monthToChange) {
+      time = new Date(time).setMonth(new Date(time).getMonth() - 1);
+    } else {
+      time = new Date(time).setFullYear(new Date(time).getFullYear() - 1);
+    }
+    time = new Date(time).setDate(1);
+  }
+
+  calendarMonth.addEventListener('click', () => {
+    monthToChange = true;
+    monthOrYearIsChanging();
+  })
+
+  calendarYear.addEventListener('click', () => {
+    monthToChange = false;
+    monthOrYearIsChanging();
+  })
+
+  function monthOrYearIsChanging() {
+    if (monthToChange) {
+      calendarMonth.classList.add('calendar__month--active');
+      calendarYear.classList.remove('calendar__year--active');
+    } else if (!monthToChange) {
+      calendarMonth.classList.remove('calendar__month--active');
+      calendarYear.classList.add('calendar__year--active');
+    }
+  }
+  monthOrYearIsChanging();
+
   function isLeapYear() {
     let isLeapYear = new Date(time).getFullYear();
     if (isLeapYear % 4 == 0) {
       if (isLeapYear % 100 == 0) {
         if (isLeapYear % 400 == 0) {
-          return isLeapYear = true;
+          isLeapYear = true;
         } else {
-          return isLeapYear = false;
+          isLeapYear = false;
         }
       } else {
-        return isLeapYear = true;
+        isLeapYear = true;
       }
     } else {
-      return isLeapYear = false;
+      isLeapYear = false;
     }
+    return isLeapYear;
   }
 
   function daysInMonth(month) {
@@ -82,16 +124,6 @@ window.addEventListener('load', () => {
       daysInMonth = 31;
     }
     return daysInMonth;
-  }
-
-  function nextMonth() {
-    time = new Date(time).setMonth(new Date(time).getMonth() + 1);
-    time = new Date(time).setDate(1);
-  }
-
-  function prevMonth() {
-    time = new Date(time).setMonth(new Date(time).getMonth() - 1);
-    time = new Date(time).setDate(1);
   }
 
   function monthToString(month) {
@@ -130,19 +162,34 @@ window.addEventListener('load', () => {
   function prevDates() {
     let prevDates = new Date(time).setMonth(new Date(time).getMonth() - 1);
     prevDates = new Date(prevDates).setDate(daysInMonth(new Date(prevDates).getMonth()))
-    for (let length = new Date(time).getDay(); length != 0; length--) {
+    let length = new Date(time).getDay();
+    (length == 0) ? length = 6: length--;
+    for (; length != 0; length--) {
       let dates = document.createElement('div');
-      dates.className = 'calendar__grid-item--grey';
+      dates.className = 'calendar__grid-item calendar__grid-item--grey';
+      dates.addEventListener('click', () => {
+        monthToChange = true;
+        monthOrYearIsChanging();
+      });
+      dates.addEventListener('click', prevMonth);
+      dates.addEventListener('click', updateDate);
+      dates.addEventListener('click', deleteDates);
+      dates.addEventListener('click', drawDates);
       calendarGrid.insertBefore(dates, calendarGrid.firstChild).innerHTML = new Date(prevDates).getDate();
       prevDates = new Date(prevDates).setDate(new Date(prevDates).getDate() - 1);
     }
   }
 
   function mainDates() {
-    let dates;
     for (let i = 1; i <= daysInMonth(new Date(time).getMonth()); i++) {
       let dates = document.createElement('div');
-      dates.className = 'calendar__grid-item'
+      dates.className = 'calendar__grid-item';
+
+      dates.addEventListener('click', (event) => {
+        let target = event.target;
+        highlightDate(target);
+      });
+
       calendarGrid.appendChild(dates).innerHTML = i;
       if (i == (new Date().getDate()) &&
         (new Date(time).getMonth() == new Date().getMonth()) &&
@@ -155,8 +202,25 @@ window.addEventListener('load', () => {
   function nextDates(length) {
     for (let i = 1; i <= 42 - length; i++) {
       let dates = document.createElement('div');
-      dates.className = 'calendar__grid-item--grey';
+      dates.className = 'calendar__grid-item calendar__grid-item--grey';
+      dates.addEventListener('click', () => {
+        monthToChange = true;
+        monthOrYearIsChanging();
+      });
+      dates.addEventListener('click', nextMonth);
+      dates.addEventListener('click', updateDate);
+      dates.addEventListener('click', deleteDates);
+      dates.addEventListener('click', drawDates);
       calendarGrid.appendChild(dates).innerHTML = i;
+    }
+  }
+
+  function isWeekend() {
+    for (let i = 0; i < 42; i++) {
+      if (i % 7 == 0 + 5 || i % 7 == 0 + 6) {
+        let weekend = document.querySelectorAll('.calendar__grid-item')
+        weekend[i].classList.add('calendar__grid-item--weekend')
+      }
     }
   }
 
@@ -164,29 +228,55 @@ window.addEventListener('load', () => {
     prevDates();
     mainDates();
     nextDates(calendarGrid.childElementCount);
+    isWeekend();
+  }
+
+  let isDateHighlighted = 0;
+  function showTasks() {
+    if (isDateHighlighted) {
+      tasks.classList.add('tasks--highlight');
+      tasksTitle.classList.add('tasks__title--active');
+      tasksAddTask.classList.add('tasks__plus-item--active');
+    } else if (isDateHighlighted == false) {
+      tasks.classList.remove('tasks--highlight');
+      tasksTitle.classList.remove('tasks__title--active');
+      tasksAddTask.classList.remove('tasks__plus-item--active');
+    }
+  }
+
+  function highlightDate(target) {
+    let dates = document.querySelectorAll('.calendar__grid-item');
+    for (let date of dates) {
+      if (date == target && date.classList.contains('calendar__grid-item--highlight')) {
+        date.classList.remove('calendar__grid-item--highlight');
+        isDateHighlighted = 0;
+        showTasks();
+        return;}
+      date.classList.remove('calendar__grid-item--highlight');
+    }
+    target.classList.add('calendar__grid-item--highlight');
+    isDateHighlighted = 1;
+    showTasks();
+  }
+
+  function changePageTitle() {
+    document.title = monthToString(new Date(time).getMonth()) + ' ' + new Date(time).getFullYear();
+    setTimeout(() => {
+      document.title = 'Calendar';
+    }, 1000);
   }
 
   calendarPrevMonth.addEventListener('click', prevMonth);
   calendarPrevMonth.addEventListener('click', updateDate);
   calendarPrevMonth.addEventListener('click', deleteDates);
   calendarPrevMonth.addEventListener('click', drawDates);
-  calendarPrevMonth.addEventListener('click', () => {
-    document.title = monthToString(new Date(time).getMonth()) + ' ' + new Date(time).getFullYear();
-    setTimeout(() => {
-      document.title = 'Calendar';
-    }, 1000);
-  })
+  calendarPrevMonth.addEventListener('click', changePageTitle);
 
   calendarNextMonth.addEventListener('click', nextMonth);
   calendarNextMonth.addEventListener('click', updateDate);
   calendarNextMonth.addEventListener('click', deleteDates);
   calendarNextMonth.addEventListener('click', drawDates);
-  calendarNextMonth.addEventListener('click', () => {
-    document.title = monthToString(new Date(time).getMonth()) + ' ' + new Date(time).getFullYear();
-    setTimeout(() => {
-      document.title = 'Calendar';
-    }, 1000);
-  })
+  calendarNextMonth.addEventListener('click', changePageTitle);
 
   prevMonth();
   nextMonth();
@@ -201,12 +291,18 @@ window.addEventListener('load', () => {
   const backgroundItem1 = document.createElement('div');
   backgroundItem1.className = 'background__item-1';
   background.appendChild(backgroundItem1);
+  const tasks = document.createElement('div');
+  tasks.className = 'tasks';
+  background.appendChild(tasks);
+  const tasksTitle = document.createElement('p');
+  tasksTitle.className = 'tasks__title';
+  tasks.appendChild(tasksTitle).innerHTML = 'Your Tasks';
+  const tasksAddTask = document.createElement('div');
+  tasksAddTask.className = 'tasks__plus-item';
+  tasks.appendChild(tasksAddTask).innerHTML = '+';
   const backgroundItem2 = document.createElement('div');
   backgroundItem2.className = 'background__item-2';
   background.appendChild(backgroundItem2);
-  const backgroundItem3 = document.createElement('div');
-  backgroundItem3.className = 'background__item-3';
-  background.appendChild(backgroundItem3);
   const backgroundLine = document.createElement('div');
   backgroundLine.className = 'background__line';
   background.appendChild(backgroundLine);
@@ -238,31 +334,31 @@ window.addEventListener('load', () => {
 
   function backgroundAnimation() {
     setTimeout(() => {
-      background.classList.toggle('background--active');
+      background.classList.toggle('background--loaded');
     }, 1000);
     setTimeout(() => {
       backgroundItem1.style.width = '26.2rem';
     }, 600);
     setTimeout(() => {
-      backgroundItem1.classList.toggle('background__item-1--active');
+      backgroundItem1.classList.toggle('background__item-1--loaded');
     }, 1200);
     setTimeout(() => {
-      backgroundItem2.style.width = '35rem';
+      tasks.style.width = '35rem';
     }, 600);
     setTimeout(() => {
-      backgroundItem2.classList.toggle('background__item-2--active');
+      tasks.classList.toggle('tasks--loaded');
     }, 1200);
     setTimeout(() => {
-      backgroundLine.classList.toggle('background__line--active');
+      backgroundLine.classList.toggle('background__line--loaded');
     }, 1800);
     setTimeout(() => {
-      backgroundNameItem.classList.toggle('background__name-item--active');
+      backgroundNameItem.classList.toggle('background__name-item--loaded');
     }, 2400);
     setTimeout(() => {
-      backgroundItem3.classList.toggle('background__item-3--active');
+      backgroundItem2.classList.toggle('background__item-2--loaded');
     }, 2400);
     setTimeout(() => {
-      backgroundTitle.classList.toggle('background__title--active');
+      backgroundTitle.classList.toggle('background__title--loaded');
     }, 2400);
   }
 
@@ -302,7 +398,6 @@ window.addEventListener('load', () => {
     startBtn.style.color = '#fff0b5';
 
     setTimeout(() => {
-      calendar.style.display = 'block';
       startBtn.style.color = '#ffd321';
     }, 70);
 
@@ -314,11 +409,15 @@ window.addEventListener('load', () => {
     setTimeout(() => {
       startBtn.remove();
     }, 1000);
+
+    setTimeout(() => {
+      calendar.style.display = 'block';
+    }, 2300);
   }
 
   function calendarDisplay() {
     setTimeout(() => {
-      calendar.classList.toggle('calendar--active');
+      calendar.classList.toggle('calendar--loaded');
       document.title = 'Calendar';
     }, 2400);
   }

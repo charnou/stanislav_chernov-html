@@ -1,6 +1,7 @@
 @import "background.css";
 @import "start-btn.css";
 @import "calendar.css";
+@import "tasks.css";
 
 html {
     font-size: 0.6669vw;

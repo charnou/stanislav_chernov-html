@@ -7,7 +7,7 @@
     user-select: none;
 }
 
-.background--active {
+.background--loaded {
     background-color: #262627;
 
     transition: 3s;
@@ -28,7 +28,7 @@
     transition: opacity 1s ease;
 }
 
-.background__title--active {
+.background__title--loaded {
     opacity: 1;
 }
 
@@ -44,47 +44,11 @@
     transition: .6s ease;
 }
 
-.background__item-1--active {
+.background__item-1--loaded {
     height: 14rem;
 }
 
 .background__item-2 {
-    position: absolute;
-    bottom: 12rem;
-    right: 19rem;
-
-    width: 0;
-    height: .5rem;
-
-    background-color: #00cc6a;
-    transition: .6s ease;
-}
-
-.background__item-2--active {
-    height: 21.3rem;
-}
-
-.background__line {
-    position: absolute;
-    bottom: 15.5rem;
-    left: 0;
-    z-index: 1;
-
-    width: 0%;
-    height: 3.1rem;
-
-    background-color: #ffd321;
-
-    box-shadow: 0px 0px 33px -1px rgba(0, 0, 0, 0.6);
-
-    transition: width .6s ease;
-}
-
-.background__line--active {
-    width: 100%;
-}
-
-.background__item-3 {
     position: absolute;
     top: 5.6rem;
     right: 4rem;
@@ -105,9 +69,28 @@
     transition: opacity .8s ease, .4s ease;
 }
 
-
-.background__item-3--active {
+.background__item-2--loaded {
     opacity: 1;
+}
+
+.background__line {
+    position: absolute;
+    bottom: 15.5rem;
+    left: 0;
+    z-index: 1;
+
+    width: 0%;
+    height: 3.1rem;
+
+    background-color: #ffd321;
+
+    box-shadow: 0px 0px 33px -1px rgba(0, 0, 0, 0.6);
+
+    transition: width .6s ease;
+}
+
+.background__line--loaded {
+    width: 100%;
 }
 
 .background__name-item {
@@ -131,6 +114,10 @@
     transition: opacity .8s ease, .4s ease;
 }
 
+.background__name-item--loaded {
+    opacity: 1;
+}
+
 .background__name-item--hover {
     width: 10.2rem;
 
@@ -140,10 +127,6 @@
     border-style: groove;
 
     transition: .4s ease;
-}
-
-.background__name-item--active {
-    opacity: 1;
 }
 
 .background__name {
