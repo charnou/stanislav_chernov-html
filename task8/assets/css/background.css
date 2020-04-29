@@ -1,0 +1,151 @@
+.background {
+    width: 100%;
+    height: 100%;
+
+    background-color: #0f0f0f;
+
+    user-select: none;
+}
+
+.background--loaded {
+    background-color: #262627;
+
+    transition: 3s;
+}
+
+.background__title {
+    position: relative;
+    top: 2.4rem;
+    left: 8rem;
+
+    width: max-content;
+
+    opacity: 0;
+
+    color: #bdbdbd;
+    font-size: 4.7rem;
+
+    transition: opacity 1s ease;
+}
+
+.background__title--loaded {
+    opacity: 1;
+}
+
+.background__item-1 {
+    position: absolute;
+    top: 19rem;
+    left: 12rem;
+
+    width: 0;
+    height: .5rem;
+
+    background-color: #00cc6a;
+    transition: .6s ease;
+}
+
+.background__item-1--loaded {
+    height: 14rem;
+}
+
+.background__item-2 {
+    position: absolute;
+    top: 5.6rem;
+    right: 4rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 6rem;
+    height: 4.3rem;
+
+    opacity: 0;
+
+    border: 0.35rem solid #262627;
+    outline: 0.35rem solid #00cc6a;
+    background-color: #00cc6a;
+
+    transition: opacity .8s ease, .4s ease;
+}
+
+.background__item-2--loaded {
+    opacity: 1;
+}
+
+.background__line {
+    position: absolute;
+    bottom: 15.5rem;
+    left: 0;
+    z-index: 1;
+
+    width: 0%;
+    height: 3.1rem;
+
+    background-color: #ffd321;
+
+    box-shadow: 0px 0px 33px -1px rgba(0, 0, 0, 0.6);
+
+    transition: width .6s ease;
+}
+
+.background__line--loaded {
+    width: 100%;
+}
+
+.background__name-item {
+    position: absolute;
+    bottom: 9rem;
+    left: 6rem;
+
+    display: flex;
+    justify-content: left;
+    align-items: center;
+
+    width: 4rem;
+    height: 2.5rem;
+
+    opacity: 0;
+
+    border: 0.3rem solid #262627;
+    outline: 0.3rem solid #00cc6a;
+    background-color: #00cc6a;
+
+    transition: opacity .8s ease, .4s ease;
+}
+
+.background__name-item--loaded {
+    opacity: 1;
+}
+
+.background__name-item--hover {
+    width: 10.2rem;
+
+    background-color: transparent;
+    outline: transparent;
+    border: 0.2rem #ffd321;
+    border-style: groove;
+
+    transition: .4s ease;
+}
+
+.background__name {
+    position: absolute;
+    margin-left: 0.4rem;
+
+    width: max-content;
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    color: #ffd321;
+    font-weight: 600;
+
+    transition: 0.01s;
+}
+
+.background__name--hover {
+    opacity: 1;
+    transition: .2s ease;
+}
