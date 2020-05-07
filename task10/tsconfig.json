@@ -9,7 +9,7 @@
         "outFile": "dist/main.js",
         "rootDir": "./src",
         "sourceMap": true,
-        "watch": true,
+        "watch": false,
         "noEmitOnError": true,
     },
     "include": [
