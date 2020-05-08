@@ -1,36 +1,37 @@
 abstract class Animal {
 
-    constructor(protected readonly name: string,
+    constructor(
+        protected readonly name: string,
         protected readonly color: string,
         protected readonly sound: string,
         protected isRunning: boolean = false) {
     }
 
-    run(): void {
+    public run(): void {
         this.isRunning = true;
-        console.log(`${this.name} побежал!`)
+        console.log(`${this.name} побежал!`);
     }
 
-    stopRun(): void {
+    public stopRun(): void {
         this.isRunning = false;
-        console.log(`${this.name} остановился!`)
+        console.log(`${this.name} остановился!`);
     }
 
-    whatColor(): void {
-        console.log(`У зверька "${this.name}" цвет меха - ${this.color}`)
+    public whatColor(): void {
+        console.log(`У зверька "${this.name}" цвет меха - ${this.color}`);
     }
 
     @logMethod
-    isRun(): void {
+    public isRun(): void {
         if (this.isRunning) {
-            console.log(`${this.name} бежит, и его ${this.color} мех развевается!`)
+            console.log(`${this.name} бежит, и его ${this.color} мех развевается!`);
         } else {
-            console.log(`${this.name} стоит.`)
+            console.log(`${this.name} стоит.`);
         }
     }
 
-    voice(): void {
-        console.log(`${this.name} сказал ${this.sound}`)
+    public voice(): void {
+        console.log(`${this.name} сказал ${this.sound}`);
     }
 }
 
@@ -42,28 +43,29 @@ interface IRacoon {
 
 class Racoon extends Animal implements IRacoon {
 
-    constructor(protected readonly name: string,
+    constructor(
+        protected readonly name: string,
         protected readonly color: string,
         protected readonly sound: string,
         protected isWashing: boolean = false) {
-        super(name, color, sound)
+        super(name, color, sound);
     }
 
-    goWash(): void {
+    public goWash(): void {
         this.isWashing = true;
-        console.log(`${this.name} начал мыть всё что ему попадёться!!!`)
+        console.log(`${this.name} начал мыть всё что ему попадёться!!!`);
     }
 
-    stopWash(): void {
+    public stopWash(): void {
         this.isWashing = false;
-        console.log(`${this.name} вроде успокоился...`)
+        console.log(`${this.name} вроде успокоился...`);
     }
 
-    isWash(): void {
+    public isWash(): void {
         if (this.isWashing) {
-            console.log(`${this.name} моет что-то, и его ${this.color} мех очень мокрый!`)
+            console.log(`${this.name} моет что-то, и его ${this.color} мех очень мокрый!`);
         } else {
-            console.log(`${this.name} ничего, к счастью, не моет...`)
+            console.log(`${this.name} ничего, к счастью, не моет...`);
         }
     }
 }
@@ -76,32 +78,33 @@ interface IBeaver {
 
 class Beaver extends Animal implements IBeaver {
 
-    constructor(protected readonly name: string,
+    constructor(
+        protected readonly name: string,
         protected readonly color: string,
         protected readonly sound: string,
         protected isBuilding: boolean = false) {
-        super(name, color, sound)
+        super(name, color, sound);
     }
 
-    goBuild(): void {
+    public goBuild(): void {
         this.isBuilding = true;
-        console.log(`Трудолюбивый ${this.name} начал строить плотину!`)
+        console.log(`Трудолюбивый ${this.name} начал строить плотину!`);
     }
 
-    stopBuild(): void {
+    public stopBuild(): void {
         this.isBuilding = false;
-        console.log(`${this.name} пошёл отдыхать.`)
+        console.log(`${this.name} пошёл отдыхать.`);
     }
 
     @logMethod
-    isBuild(): void {
+    public isBuild(): void {
         if (this.isBuilding) {
-            console.log(`${this.name} сооружает плотину, и его ${this.color} мех тут совершенно не причём!`)
+            console.log(`${this.name} сооружает плотину, и его ${this.color} мех тут совершенно не причём!`);
         } else {
-            console.log(`${this.name} сейчас отдыхает.`)
+            console.log(`${this.name} сейчас отдыхает.`);
         }
     }
 }
 
-const bob = new Racoon('Боб', 'серый', '"фррр"');
-const tod = new Beaver('Тод', 'коричневый', '"тррр"');
+const bob: Racoon = new Racoon('Боб', 'серый', '"фррр"');
+const tod: Beaver = new Beaver('Тод', 'коричневый', '"тррр"');
