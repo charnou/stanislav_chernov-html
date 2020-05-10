@@ -1,0 +1,18 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "system",
+        "noImplicitAny": true,
+        "removeComments": true,
+        "preserveConstEnums": true,
+        "experimentalDecorators": true,
+        "outFile": "dist/main.js",
+        "rootDir": "./src",
+        "sourceMap": true,
+        "watch": false,
+        "noEmitOnError": true,
+    },
+    "include": [
+        "./**/*"
+    ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "task10",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {
+    "copyfiles": "^2.2.0",
+    "typescript": "^3.8.3"
+  },
+  "scripts": {
+    "copy": "copyfiles -f src/index.html dist",
+    "build": "npm i & npm run copy & tsc & echo 'build done'"
+  },
+  "author": "",
+  "license": "ISC"
+}
