@@ -1,0 +1,11 @@
+$base-font-family: Arial, Helvetica, sans-serif;
+$base-font-size: 0.6669vw;
+$base-greenColor: #00cc6a;
+$base-yellowColor: #ffd321;
+$base-darkColor: #262627;
+
+$selection-color:  #48ffa749;
+
+@mixin opacity-show () {
+    opacity: 1;
+}

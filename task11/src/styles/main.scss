@@ -1,0 +1,37 @@
+@import "./variables.scss";
+
+html {
+    font-size: $base-font-size;
+}
+
+body {
+    margin: 0 auto;
+
+    width: 100%;
+    height: 100vh;
+    min-height: 100rem;
+
+    overflow: hidden;
+
+    font-family: $base-font-family;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+
+    scroll-behavior: smooth;
+}
+
+*::selection {
+    background-color: $selection-color;
+}
+
+@import "background.scss";
+@import "tasks.scss";
+@import "start-btn.scss";
+@import "calendar.scss";
+
+//dog
+@import "hello-dog.scss";

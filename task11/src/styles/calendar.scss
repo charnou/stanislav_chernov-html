@@ -1,0 +1,178 @@
+@import "./variables.scss";
+
+$calendar-textColor: #cfcfcf;
+
+.calendar {
+    display: none;
+
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 2;
+    padding: 1.3rem 1.9rem;
+
+    width: 38.5rem;
+    height: 38.5rem;
+
+    opacity: 0;
+    user-select: none;
+
+    font-size: 1.7rem;
+    color: $calendar-textColor;
+    background-color: $base-darkColor;
+    box-shadow: 0px 0px 64px -3px rgba(0, 0, 0, 0.64);
+
+    transition: opacity 1s ease;
+
+    &--loaded {
+        @include opacity-show;
+    }
+
+    &__month {
+        margin-right: 1rem;
+
+        cursor: pointer;
+
+        &--active {
+            color: $base-greenColor;
+            transition: 0.1s;
+        }
+    }
+
+    &__year {
+        cursor: pointer;
+
+        &--active {
+            color: $base-greenColor;
+            transition: 0.1s;
+        }
+    }
+
+    &__prev-month {
+        display: inline-block;
+
+        position: absolute;
+        right: 8.5rem;
+        top: 1.5rem;
+
+        cursor: pointer;
+
+        transform: rotate(135deg);
+    }
+
+    &__next-month {
+        display: inline-block;
+
+        position: absolute;
+        right: 3.6rem;
+        top: 1rem;
+
+        cursor: pointer;
+
+        transform: rotate(-45deg);
+    }
+
+    &__week {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+
+        margin: 3rem 0 1rem;
+
+        text-align: center;
+    }
+
+    &__grid {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+
+        margin: 0;
+
+        text-align: center;
+    }
+
+    &__grid-item {
+        padding: 1.3rem 0;
+
+        transition: 0.1s;
+
+        &--weekend {
+            background-color: rgba(0, 204, 105, 0.03);
+        }
+
+        &--current {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background-color: rgba(75, 75, 75, 0.4);
+        }
+
+        &--current::after {
+            content: " ";
+            position: absolute;
+            z-index: 1;
+
+            width: 90%;
+            height: 90%;
+
+            pointer-events: none;
+
+            border: 0.3rem solid #262627ad;
+        }
+
+        &--grey {
+            color: #5a5a5a;
+        }
+
+        &--highlight {
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            color: #f5f5f5;
+            background-color: $base-greenColor;
+
+            transition: 0.2s;
+        }
+
+        &--highlight::after {
+            content: " ";
+            position: absolute;
+            z-index: 1;
+
+            width: 90%;
+            height: 90%;
+
+            pointer-events: none;
+
+            border: 0.3rem solid $base-darkColor;
+
+            transition: 0.2s;
+        }
+
+        &:hover {
+            cursor: pointer;
+
+            background: #5a5a5a;
+        }
+
+        &--grey:hover {
+            cursor: pointer;
+
+            color: #c9c9c9;
+            background: #5a5a5a;
+        }
+
+        &--highlight:hover {
+            cursor: pointer;
+
+            color: #dfdfdf;
+            background: #00964d;
+        }
+    }
+}
