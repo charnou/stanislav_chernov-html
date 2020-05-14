@@ -1,0 +1,21 @@
+<div class="task" [class.task--delete]="delete" [class.task--done]="done" [class.task--completed]="completed">
+
+  <span class="task__title">{{taskList.title}}</span>
+
+  <div class="task__description">{{taskList.description}} </div>
+
+  <span class="task__time">
+    {{ taskList.timeLog | date: 'EE HH:mm:ss' }}
+  </span>
+
+  <div class="task__delete" (mouseover)="delete = true" (mouseout)="delete = false" [hidden]="completed"
+    (click)="callParent()">
+    <p>delete</p>
+  </div>
+
+  <div class="task__done" (mouseover)="done = true" (mouseout)="done = false" (click)="completed = true"
+    [hidden]="completed">
+    <p>done</p>
+  </div>
+
+</div>

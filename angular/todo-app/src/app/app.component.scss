@@ -1,0 +1,17 @@
+.container {
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  padding: 0 25%;
+
+  width: 100%;
+  height: max-content;
+  min-height: 100vh;
+
+  background-image: radial-gradient(circle 827px at 47.3% 48%, rgba(255, 255, 255, 1) 0%, rgb(217, 239, 248) 90%);
+}
+
+.header {
+  margin: 4.5rem 0;
+}

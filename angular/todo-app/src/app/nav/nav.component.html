@@ -1,0 +1,16 @@
+<div class="nav">
+
+  <div class="nav__time">
+    {{ time | date: 'EEEE HH:mm' }}
+  </div>
+
+  <input class="nav__title" type="text" maxlength="30" placeholder="Title" [(ngModel)]="title">
+
+  <textarea class="nav__description" maxlength="200" placeholder="Description" [(ngModel)]="description">
+  </textarea>
+
+  <div class="nav__add-task" (click)="addTask(); callParent()"
+  [class.nav__add-task--active]="isTitle()">
+    Add task
+  </div>
+</div>

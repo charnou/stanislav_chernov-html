@@ -1,0 +1,108 @@
+@mixin transition {
+  transition: background 0.3s, color 0.2s;
+}
+
+@mixin textOnHover {
+  & p {
+    margin-top: 5rem;
+
+    opacity: 0;
+
+    color: #fff;
+    text-align: center;
+
+    transition: 0.2s;
+  }
+
+  &:hover p {
+    opacity: 1;
+  }
+}
+
+.task {
+  position: relative;
+
+  margin: 0.75rem 0;
+  padding: 0.5rem;
+
+  width: 100%;
+  height: 7rem;
+
+  background: #fff;
+
+  @include transition();
+
+  &--delete {
+    color: #fff;
+    background: #df3f3f;
+  }
+
+  &--done {
+    color: #fff;
+    background: #3cb62c;
+  }
+
+  &--completed {
+    text-decoration: line-through;
+
+    color: #fff;
+    background: #3cb62c;
+  }
+
+  &__delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    width: 8rem;
+    height: 100%;
+
+    cursor: pointer;
+    user-select: none;
+
+    @include textOnHover;
+  }
+
+  &__done {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 8rem;
+    height: 100%;
+
+    cursor: pointer;
+    user-select: none;
+
+    @include textOnHover;
+  }
+
+  &__title {
+    display: inline;
+
+    margin: 0 0 0.4rem;
+
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
+  &__description {
+    margin: 0.5rem 0 0;
+
+    width: 100%;
+    height: 100%;
+
+    white-space: pre-wrap;
+    word-break: break-all;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  &__time {
+    position: absolute;
+
+    right: 0.5rem;
+    top: 0.5rem;
+  }
+}
