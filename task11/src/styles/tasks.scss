@@ -1,0 +1,65 @@
+@import "./variables.scss";
+
+.tasks {
+    position: absolute;
+    bottom: 12rem;
+    right: 19rem;
+
+    width: 0;
+    height: .5rem;
+
+    background-color: $base-greenColor;
+    transition: .4s ease;
+
+    &--loaded {
+        height: 21.3rem;
+
+        padding: 1rem 1.2rem;
+    }
+
+    &--highlight {
+        bottom: 22rem;
+
+        height: 30rem;
+    }
+
+    &__title {
+        display: inline-block;
+        margin: 0;
+
+        opacity: 0;
+
+        font-size: 1.6rem;
+        transition: .6s ease;
+
+        &--active {
+            @include opacity-show;
+        }
+    }
+
+    &__plus-item {
+        display: inline-block;
+        margin-left: 23.5rem;
+
+        opacity: 0;
+
+        cursor: pointer;
+
+        font-size: 2rem;
+
+        transition: color .1s, opacity .6s ease;
+
+        &--active {
+            @include opacity-show;
+        }
+
+        &:hover {
+            color: #525252;
+        }
+
+        &:active {
+            color: #0f0f0f;
+        }
+    }
+
+}

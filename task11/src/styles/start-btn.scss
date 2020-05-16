@@ -1,0 +1,93 @@
+$start-btn--notHover: #b49721d0;
+
+.start-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+
+    padding: 1.5rem 2.5rem;
+
+    cursor: pointer;
+    overflow: hidden;
+    user-select: none;
+
+    text-transform: uppercase;
+    color: $start-btn--notHover;
+    font-size: 5rem;
+
+    transition: .3s color;
+
+    &--hover {
+        color: $base-yellowColor;
+    }
+
+    &__border-1 {
+        position: absolute;
+        display: block;
+
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 0.2rem;
+        background: linear-gradient(90deg, transparent, $base-yellowColor);
+
+        &--hover {
+            left: 100%;
+
+            transition: .6s;
+        }
+    }
+
+    &__border-2 {
+        position: absolute;
+        display: block;
+
+        bottom: -100%;
+        right: 0;
+        width: 0.2rem;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, $base-yellowColor);
+
+        &--hover {
+            bottom: 100%;
+
+            transition: .6s;
+        }
+    }
+
+    &__border-3 {
+        position: absolute;
+        display: block;
+
+        bottom: 0;
+        right: -100%;
+        width: 100%;
+        height: 0.2rem;
+        background: linear-gradient(90deg, transparent, $base-yellowColor);
+
+        &--hover {
+            right: 100%;
+
+            transition: .6s;
+        }
+    }
+
+    &__border-4 {
+        position: absolute;
+        display: block;
+
+        bottom: 100%;
+        left: 0;
+        width: 0.2rem;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, $base-yellowColor);
+
+        &--hover {
+            bottom: -100%;
+
+            transition: .6s;
+        }
+    }
+}

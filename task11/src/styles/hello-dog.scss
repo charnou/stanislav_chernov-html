@@ -1,0 +1,17 @@
+.hello-dog {
+    position: absolute;
+
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+
+    height: 20vh;
+
+    cursor: help;
+
+    transition: opacity 1s ease;
+
+    &--hidden {
+        opacity: 0;
+    }
+}
