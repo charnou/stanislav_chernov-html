@@ -4,56 +4,71 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-nav',
   templateUrl: './nav.component.html',
-  styleUrls: ['./nav.component.scss']
+  styleUrls: ['./nav.component.scss'],
 })
-
 export class NavComponent implements OnInit {
+  // FIELDS FOR Task{}
   public title: string;
   public description: string;
   public time: Date;
-  
+
+  // Task{}
   public task: Task;
 
   constructor() {
     this.title = '';
     this.description = '';
-    this.time = new Date();
   }
 
+  // EVENT FOR PARENT
+  @Output()
+  public onTaskAdd = new EventEmitter();
+
+  // TIME UPDATING
   ngOnInit(): void {
     setInterval(() => {
       this.time = new Date();
     }, 1000);
   }
 
-  isTitle(): boolean {
-    if (this.title.length != 0) {
-      return true;
-    }
-    return false;
+  // CHECK IS TITLE HAS FILLED
+  public isTitleNotEmpty(): boolean {
+    return this.title.length !== 0;
   }
 
-  addTask(): void {
-    if (this.title.length == 0) {
-      return
+  // CHECK IS DESCRIPTION HAS FILLED
+  public isDescriptionNotEmpty(): boolean {
+    return this.description.length !== 0;
+  }
+
+  // REMOVE TEXT FOR INPUTS
+  public clearInput(): void {
+    this.title = '';
+    this.description = '';
+  }
+
+  // CREATE AN Task{} WITH FIELDS
+  public buildTask(): void {
+    if (this.title.length === 0) {
+      return;
     }
-    if (this.description.length == 0) {
-      this.description = 'No description';
+    if (this.description.length === 0) {
+      this.description = 'No description...';
     }
 
-    let title: string = this.title;
-    let description: string = this.description;
-    let timeLog: Date = this.time;
+    const title: string = this.title;
+    const description: string = this.description;
+    const timeLog: Date = this.time;
+    const isTaskCompleted = false;
 
     this.title = '';
     this.description = '';
 
-    this.task = { title, description, timeLog };
+    this.task = { title, description, timeLog, isTaskCompleted };
   }
 
-  @Output() onTaskAdd = new EventEmitter();
-
-  callParent(): void {
+  // PUSH Task{} INTO PARENT
+  public addTask(): void {
     this.onTaskAdd.emit(this.task);
   }
 }

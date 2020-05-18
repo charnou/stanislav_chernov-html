@@ -1,28 +1,38 @@
-@mixin transition {
-  transition: background 0.3s, color 0.2s;
-}
+// MIXIN FOR done AND delete SIDE BUTTONS
+@mixin sideButton($side) {
+  position: absolute;
+  bottom: 0;
+  @if $side == "left" {
+    left: 0;
+    border-radius: 0px 1rem 0px 0px;
+    background-color: rgba(60, 182, 44, 0.8);
+  } @else if $side == "right" {
+    right: 0;
+    border-radius: 1rem 0px 0px 0px;
+    background-color: rgba(223, 63, 63, 0.8);
+  }
+  padding: 0.5rem;
+  width: 5.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+  &--transparent {
+    background-color: transparent;
+  }
+  & > p {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-@mixin textOnHover {
-  & p {
-    margin-top: 5rem;
-
-    opacity: 0;
+    padding: 0;
+    margin: 0;
 
     color: #fff;
-    text-align: center;
-
-    transition: 0.2s;
-  }
-
-  &:hover p {
-    opacity: 1;
   }
 }
 
 .task {
   position: relative;
 
-  margin: 0.75rem 0;
   padding: 0.5rem;
 
   width: 100%;
@@ -30,51 +40,47 @@
 
   background: #fff;
 
-  @include transition();
+  user-select: none;
 
-  &--delete {
+  transition: 0.3s;
+
+  //HOVER STYLES FOR BACKGROUND OF TASK
+  &--delete-on-hover {
     color: #fff;
     background: #df3f3f;
   }
 
-  &--done {
+  &--done-on-hover {
     color: #fff;
     background: #3cb62c;
   }
 
-  &--completed {
+  &--when-completed {
     text-decoration: line-through;
 
     color: #fff;
-    background: #3cb62c;
+    background: rgba(60, 182, 44, 0.8);
   }
 
-  &__delete {
-    position: absolute;
-    top: 0;
-    right: 0;
-
-    width: 8rem;
-    height: 100%;
-
-    cursor: pointer;
-    user-select: none;
-
-    @include textOnHover;
+  //delete task BUTTON
+  &__delete-side {
+    @include sideButton(right);
   }
 
-  &__done {
-    position: absolute;
-    top: 0;
-    left: 0;
+  //done task BUTTON
+  &__done-side {
+    @include sideButton(left);
+  }
 
-    width: 8rem;
-    height: 100%;
+  //edit task BUTTON
+  &__edit-button {
+    display: inline-block;
+
+    width: max-content;
 
     cursor: pointer;
-    user-select: none;
 
-    @include textOnHover;
+    transform: scaleX(-100%);
   }
 
   &__title {
@@ -86,22 +92,63 @@
     font-weight: 600;
   }
 
+  //INPUT FOR EDITING TASK
+  &__title-input {
+    display: inline-block;
+    padding: 0;
+
+    margin-top: 0.1rem;
+
+    height: 1.6rem;
+    width: 80%;
+
+    border: none;
+    outline: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+
   &__description {
     margin: 0.5rem 0 0;
 
     width: 100%;
-    height: 100%;
+    height: 2.2rem;
 
-    white-space: pre-wrap;
-    word-break: break-all;
+    overflow: auto;
 
     font-size: 0.8rem;
     font-weight: 600;
   }
 
+  //INPUT FOR EDITING TASK
+  &__description-input {
+    display: block;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+
+    width: 100%;
+    height: 2.2rem;
+
+    border: none;
+    outline: none;
+
+    resize: none;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    &::placeholder {
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+  }
+
+  //TIMELOG
   &__time {
     position: absolute;
-
     right: 0.5rem;
     top: 0.5rem;
   }

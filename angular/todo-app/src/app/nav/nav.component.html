@@ -1,16 +1,51 @@
 <div class="nav">
-
+  <!-- CLOCK -->
   <div class="nav__time">
-    {{ time | date: 'EEEE HH:mm' }}
+    {{ time | date: "EEEE HH:mm" }}
   </div>
 
-  <input class="nav__title" type="text" maxlength="30" placeholder="Title" [(ngModel)]="title">
+  <form autocomplete="off">
+    <!-- TITLE -->
+    <input
+      class="nav__title"
+      type="text"
+      maxlength="30"
+      placeholder="Title"
+      [(ngModel)]="title"
+      name="taskBuilder"
+      autofocus
+    />
 
-  <textarea class="nav__description" maxlength="200" placeholder="Description" [(ngModel)]="description">
-  </textarea>
+    <!-- DESCRIPTION -->
+    <textarea
+      class="nav__description"
+      maxlength="60"
+      placeholder="Description"
+      [(ngModel)]="description"
+      name="taskBuilder"
+    >
+    </textarea>
 
-  <div class="nav__add-task" (click)="addTask(); callParent()"
-  [class.nav__add-task--active]="isTitle()">
-    Add task
-  </div>
+    <!-- CONFIRM BUTTON -->
+    <button
+      class="nav__add-task"
+      [class.nav__add-task--active]="isTitleNotEmpty()"
+      [disabled]="!isTitleNotEmpty()"
+      (click)="buildTask(); addTask()"
+    >
+      Add task
+    </button>
+
+    <!-- CLEAR BUTTON -->
+    <button
+      class="nav__clear-input"
+      [class.nav__clear-input--active]="
+        isTitleNotEmpty() || isDescriptionNotEmpty()
+      "
+      [disabled]="!isTitleNotEmpty() && !isDescriptionNotEmpty()"
+      (click)="clearInput()"
+    >
+      Clear
+    </button>
+  </form>
 </div>
