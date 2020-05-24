@@ -29,8 +29,8 @@
     <!-- CONFIRM BUTTON -->
     <button
       class="nav__add-task"
-      [class.nav__add-task--active]="isTitleNotEmpty()"
-      [disabled]="!isTitleNotEmpty()"
+      [class.nav__add-task--active]="title.length !== 0"
+      [disabled]="title.length === 0"
       (click)="buildTask(); addTask()"
     >
       Add task
@@ -40,9 +40,9 @@
     <button
       class="nav__clear-input"
       [class.nav__clear-input--active]="
-        isTitleNotEmpty() || isDescriptionNotEmpty()
+        title.length !== 0 || description.length !== 0
       "
-      [disabled]="!isTitleNotEmpty() && !isDescriptionNotEmpty()"
+      [disabled]="title.length === 0 && description.length === 0"
       (click)="clearInput()"
     >
       Clear

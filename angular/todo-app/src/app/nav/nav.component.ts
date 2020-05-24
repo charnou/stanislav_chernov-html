@@ -1,5 +1,6 @@
-import { Task } from './../app.component';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TaskListService } from '../_services/task-list.service';
+import { Task } from '../_services/task-list-data.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,38 +8,25 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
   styleUrls: ['./nav.component.scss'],
 })
 export class NavComponent implements OnInit {
+  // Task{}
+  public task: Task;
+
   // FIELDS FOR Task{}
   public title: string;
   public description: string;
   public time: Date;
 
-  // Task{}
-  public task: Task;
-
-  constructor() {
+  constructor(public taskListService: TaskListService) {
     this.title = '';
     this.description = '';
+    this.time = new Date();
   }
 
-  // EVENT FOR PARENT
-  @Output()
-  public onTaskAdd = new EventEmitter();
-
-  // TIME UPDATING
+  // CLOCK TIME UPDATING
   ngOnInit(): void {
     setInterval(() => {
       this.time = new Date();
     }, 1000);
-  }
-
-  // CHECK IS TITLE HAS FILLED
-  public isTitleNotEmpty(): boolean {
-    return this.title.length !== 0;
-  }
-
-  // CHECK IS DESCRIPTION HAS FILLED
-  public isDescriptionNotEmpty(): boolean {
-    return this.description.length !== 0;
   }
 
   // REMOVE TEXT FOR INPUTS
@@ -47,28 +35,24 @@ export class NavComponent implements OnInit {
     this.description = '';
   }
 
-  // CREATE AN Task{} WITH FIELDS
+  // CREATE A Task{} WITH FIELDS
   public buildTask(): void {
     if (this.title.length === 0) {
       return;
     }
-    if (this.description.length === 0) {
-      this.description = 'No description...';
-    }
 
-    const title: string = this.title;
-    const description: string = this.description;
+    const title = this.title;
+    const description = this.description;
     const timeLog: Date = this.time;
-    const isTaskCompleted = false;
 
     this.title = '';
     this.description = '';
 
-    this.task = { title, description, timeLog, isTaskCompleted };
+    this.task = { title, description, timeLog };
   }
 
   // PUSH Task{} INTO PARENT
   public addTask(): void {
-    this.onTaskAdd.emit(this.task);
+    this.taskListService.addTask(this.task);
   }
 }

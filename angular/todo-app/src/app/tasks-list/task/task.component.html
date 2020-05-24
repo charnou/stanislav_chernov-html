@@ -1,12 +1,12 @@
-<ng-container *ngIf="!isEditing && !task.isTaskCompleted">
+<ng-container *ngIf="!task.isEditing && !task.isCompleted">
   <div *ngTemplateOutlet="defaultTask"></div>
 </ng-container>
 
-<ng-container *ngIf="isEditing && !task.isTaskCompleted">
+<ng-container *ngIf="task.isEditing && !task.isCompleted">
   <div *ngTemplateOutlet="editingTask"></div>
 </ng-container>
 
-<ng-container *ngIf="task.isTaskCompleted && !isEditing">
+<ng-container *ngIf="task.isCompleted && !task.isEditing">
   <div *ngTemplateOutlet="completedTask"></div>
 </ng-container>
 
@@ -31,18 +31,8 @@
     </div>
 
     <span class="task__time">
-      {{ task.timeLog | date: "EE HH:mm" }}
+      {{ task.timeLog | date: "EE HH:mm:ss, d MMM" }}
     </span>
-
-    <div
-      class="task__delete-side"
-      [class.task__delete-side--transparent]="isDoneHover"
-      (mouseover)="isDeleteHover = true"
-      (mouseout)="isDeleteHover = false"
-      (click)="deleteTask()"
-    >
-      <p>delete</p>
-    </div>
 
     <div
       class="task__done-side"
@@ -52,6 +42,16 @@
       (click)="completeTask()"
     >
       <p>done</p>
+    </div>
+
+    <div
+      class="task__delete-side"
+      [class.task__delete-side--transparent]="isDoneHover"
+      (mouseover)="isDeleteHover = true"
+      (mouseout)="isDeleteHover = false"
+      (click)="deleteTask()"
+    >
+      <p>delete</p>
     </div>
   </div>
 </ng-template>
@@ -65,7 +65,7 @@
     </div>
 
     <span class="task__time">
-      {{ task.timeLog | date: "EE HH:mm" }}
+      {{ task.timeLog | date: "EE HH:mm:ss, d MMM" }}
     </span>
   </div>
 </ng-template>
@@ -90,12 +90,12 @@
     >
     </textarea>
 
-    <div class="task__delete-side" (click)="isEditing = false">
-      <p>cancel</p>
-    </div>
-
     <div class="task__done-side" (click)="saveChanges()">
       <p>save</p>
+    </div>
+
+    <div class="task__delete-side" (click)="editToggle()">
+      <p>cancel</p>
     </div>
   </div>
 </ng-template>

@@ -7,76 +7,23 @@
 
     <!-- TASK BUILDER SECTION -->
     <div class="todo__nav">
-      <app-nav (onTaskAdd)="addTask($event)"> </app-nav>
+      <app-nav> </app-nav>
     </div>
 
     <!-- PANEL SECTION -->
     <div
       class="todo__panel"
-      *ngIf="taskListCompleted.length > 0 || taskList.length > 0"
+      *ngIf="
+        taskListService.taskListCompleted.length > 0 ||
+        taskListService.taskList.length > 0
+      "
     >
-      <!-- TASKS COUNTER -->
-      <div class="todo__counter">
-        <span> Left: {{ taskList.length }} </span>
-        <span *ngIf="taskListCompleted.length > 0">
-          Completed: {{ taskListCompleted.length }}
-        </span>
-      </div>
-
-      <!-- SEARCH -->
-      <ng-container *ngIf="taskList.length > 1">
-        <input
-          type="text"
-          class="todo__search"
-          maxlength="20"
-          [(ngModel)]="searchString"
-          (ngModelChange)="search()"
-          placeholder="Search..."
-        />
-
-        <!-- SORT TOGGLE -->
-        <div class="todo__sort-toggle" (click)="sort()" *ngIf="arraySortToggle">
-          ▲
-        </div>
-        <div
-          class="todo__sort-toggle"
-          (click)="sort()"
-          *ngIf="!arraySortToggle"
-        >
-          ▼
-        </div>
-      </ng-container>
-
-      <div class="todo__line-separator"></div>
+      <app-tasks-panel></app-tasks-panel>
     </div>
 
     <!-- TASKS LIST SECTION -->
-    <div class="todo__tasks" cdkDropList (cdkDropListDropped)="drop($event)">
-      <!-- DRAG'N'DROPABLE SECTION -->
-      <app-task
-        class="todo__task"
-        *ngFor="let task of searchResult; let i = index"
-        cdkDrag
-        [task]="task"
-        [index]="i"
-        (onTaskDelete)="deleteTask($event)"
-        (onTaskComplete)="markTaskAsDone($event)"
-      >
-      </app-task>
-
-      <div
-        class="todo__line-separator"
-        *ngIf="taskListCompleted.length > 0 && taskList.length > 0"
-      ></div>
-
-      <app-task
-        class="todo__task"
-        *ngFor="let completedTask of taskListCompleted; let i = index"
-        [task]="completedTask"
-        (onTaskDelete)="deleteTask($event)"
-        (onTaskComplete)="markTaskAsDone($event)"
-      >
-      </app-task>
+    <div class="todo__tasks">
+      <app-tasks-list></app-tasks-list>
     </div>
   </div>
 </div>

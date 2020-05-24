@@ -1,13 +1,11 @@
-import { Task } from './../app.component';
 import {
   Component,
   OnInit,
   Input,
-  Output,
-  EventEmitter,
   ChangeDetectionStrategy,
-  ChangeDetectorRef,
 } from '@angular/core';
+import { TaskListService } from 'src/app/_services/task-list.service';
+import { Task } from 'src/app/_services/task-list-data.service';
 
 @Component({
   selector: 'app-task',
@@ -16,19 +14,17 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class TaskComponent implements OnInit {
-  // VAR FOR STATES
+  // STATES
   public isDeleteHover: boolean;
   public isDoneHover: boolean;
-  public isEditing: boolean;
 
-  // INTERMEDIATE VARS FOR INPUTS
+  // INTERMEDIATE INPUTS
   public editingTitle: string;
   public editingDescription: string;
 
-  constructor() {
+  constructor(public taskListService: TaskListService) {
     this.isDeleteHover = false;
     this.isDoneHover = false;
-    this.isEditing = false;
   }
 
   @Input()
@@ -37,43 +33,37 @@ export class TaskComponent implements OnInit {
   @Input()
   public index: number;
 
-  @Output()
-  public onTaskDelete = new EventEmitter();
-
-  @Output()
-  public onTaskComplete = new EventEmitter();
-
   ngOnInit() {}
 
   // CALL PARENT TO DELETE TASK
   public deleteTask(): void {
-    this.onTaskDelete.emit(this.task);
+    this.taskListService.deleteTask(this.task);
   }
 
   // CALL PARENT TO COMPLETE TASK
   public completeTask(): void {
-    this.onTaskComplete.emit(this.task);
+    this.taskListService.completeTask(this.task);
   }
 
   // CHANGE STATE TO 'EDITING'
   public editToggle(): void {
-    this.isEditing = !this.isEditing;
+    if (!this.task.isEditing) {
+      this.task.isEditing = true;
+    } else {
+      delete this.task.isEditing;
+    }
   }
 
   // SYNC OF Task{} FIELD AND INTERMEDIATE INPUTS
   public syncInputs(): void {
     this.editingTitle = this.task.title;
-    this.task.description === 'No description...'
-      ? (this.editingDescription = '')
-      : (this.editingDescription = this.task.description);
+    this.editingDescription = this.task.description;
   }
 
   // PUSH CHANGES FROM INTERMEDIATE INPUTS INTO Task{}
   public saveChanges(): void {
     this.task.title = this.editingTitle;
-    this.editingDescription === ''
-      ? (this.task.description = 'No description...')
-      : (this.task.description = this.editingDescription);
-    this.isEditing = false;
+    this.task.description = this.editingDescription ;
+    delete this.task.isEditing;
   }
 }

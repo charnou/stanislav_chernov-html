@@ -1,17 +1,23 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { NavComponent } from './nav/nav.component';
-import { TaskComponent } from './task/task.component';
 import { FormsModule } from '@angular/forms';
-import { DragDropModule } from '@angular/cdk/drag-drop';
+import { AppRoutingModule } from './app-routing.module';
+import { BrowserModule } from '@angular/platform-browser';
+import { TasksListModule } from './tasks-list/tasks-list.module';
+
+import { AppComponent } from './app.component';
+import { NavComponent } from './nav/nav.component';
+import { HeaderComponent } from './header/header.component';
+import { TasksPanelComponent } from './tasks-panel/tasks-panel.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, NavComponent, TaskComponent],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, DragDropModule],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    NavComponent,
+    AppComponent,
+    TasksPanelComponent,
+  ],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, TasksListModule],
   providers: [],
   bootstrap: [AppComponent],
 })
