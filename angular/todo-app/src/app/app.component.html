@@ -11,13 +11,7 @@
     </div>
 
     <!-- PANEL SECTION -->
-    <div
-      class="todo__panel"
-      *ngIf="
-        taskListService.taskListCompleted.length > 0 ||
-        taskListService.taskList.length > 0
-      "
-    >
+    <div class="todo__panel">
       <app-tasks-panel></app-tasks-panel>
     </div>
 

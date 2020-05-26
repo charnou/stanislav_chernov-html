@@ -39,10 +39,8 @@
     <!-- CLEAR BUTTON -->
     <button
       class="nav__clear-input"
-      [class.nav__clear-input--active]="
-        title.length !== 0 || description.length !== 0
-      "
-      [disabled]="title.length === 0 && description.length === 0"
+      [class.nav__clear-input--active]="canClear()"
+      [disabled]="!canClear()"
       (click)="clearInput()"
     >
       Clear

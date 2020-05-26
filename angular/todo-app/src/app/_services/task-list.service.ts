@@ -30,10 +30,10 @@ export class TaskListService implements OnDestroy {
     forkJoin([
       this._taskListDataService
         .loadTaskList()
-        .pipe(takeUntil(this.desctroySubject$)),
+        .pipe(delay(2000), takeUntil(this.desctroySubject$)),
       this._taskListDataService
         .loadSettings()
-        .pipe(delay(2000), takeUntil(this.desctroySubject$)),
+        .pipe(takeUntil(this.desctroySubject$)),
     ]).subscribe(([taskList, settings]: [Task[], TaskListSettings]) => {
       this.initTaskList(taskList);
       this.settings = settings;
@@ -41,22 +41,23 @@ export class TaskListService implements OnDestroy {
     });
   }
 
-  private initTaskList(taskList: Task[]): void {
-    this.taskList = taskList;
-
-    this.arraySortToggle = true;
-    this.sort();
-
-    this.taskList.forEach((task) => {
-      if (task.isCompleted) {
-        this.completeTask(task);
-      }
-    });
-  }
-
   ngOnDestroy() {
     this.desctroySubject$.next(true);
     this.desctroySubject$.complete();
+  }
+
+  // FORMATING A TASK LIST ON INIT
+  private initTaskList(taskList: Task[]): void {
+    this.taskList = taskList;
+
+    // walking through the array in reverse, we avoid the issue
+    // caused by removing array's items while iterating it.
+    for (let i = this.taskList.length - 1; i >= 0; --i) {
+      if (this.taskList[i].isCompleted) {
+        this.taskListCompleted.unshift(this.taskList[i]);
+        this.taskList.splice(i, 1);
+      }
+    }
   }
 
   // ADD TASK INTO taskList[]
@@ -67,7 +68,7 @@ export class TaskListService implements OnDestroy {
   // DELETE TASK FROM taskList[]
   public deleteTask($event: Task): void {
     this.taskList.forEach((task, i) => {
-      if ($event === task) {
+      if ($event.timeLog === task.timeLog) {
         this.taskList.splice(i, 1);
       }
     });
@@ -76,7 +77,7 @@ export class TaskListService implements OnDestroy {
   // MOVE TASK FROM taskList[] INTO taskListCompleted[]
   public completeTask($event: Task): void {
     this.taskList.forEach((task, i) => {
-      if ($event === task) {
+      if ($event.timeLog === task.timeLog) {
         task.isCompleted = true;
         this.taskListCompleted.unshift(task);
         this.taskList.splice(i, 1);

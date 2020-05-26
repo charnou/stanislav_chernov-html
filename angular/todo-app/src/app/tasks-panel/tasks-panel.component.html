@@ -7,31 +7,35 @@
     </span>
   </div>
 
+  <!-- SAVE CHANGES -->
+  <button
+    class="tasks-panel__save-changes"
+    (click)="taskListService.saveTaskList()"
+  >
+    Save changes
+  </button>
+
+  <!-- SEARCH -->
+  <input
+    class="tasks-panel__search"
+    *ngIf="taskListService.settings.isSearchActive"
+    type="text"
+    maxlength="20"
+    [(ngModel)]="taskListService.searchString"
+    placeholder="Search..."
+    [disabled]="
+      taskListService.taskList.length === 0 &&
+      taskListService.taskListCompleted.length === 0
+    "
+  />
+
+  <!-- SORT TOGGLE -->
   <ng-container
     *ngIf="
-      taskListService.taskList.length ||
-      taskListService.taskListCompleted.length
+      taskListService.taskList.length !== 0 ||
+      taskListService.taskListCompleted.length !== 0
     "
   >
-    <!-- SAVE CHANGES -->
-    <button
-      class="tasks-panel__save-changes"
-      (click)="taskListService.saveTaskList()"
-    >
-      Save changes
-    </button>
-
-    <!-- SEARCH -->
-    <input
-      class="tasks-panel__search"
-      *ngIf="taskListService.settings.isSearchActive"
-      type="text"
-      maxlength="20"
-      [(ngModel)]="taskListService.searchString"
-      placeholder="Search..."
-    />
-
-    <!-- SORT TOGGLE -->
     <ng-container *ngIf="taskListService.settings.isSortActive">
       <div
         class="tasks-panel__sort-toggle"

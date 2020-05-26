@@ -29,6 +29,10 @@ export class NavComponent implements OnInit {
     }, 1000);
   }
 
+  public canClear(): boolean {
+    return this.title.length !== 0 || this.description.length !== 0;
+  }
+
   // REMOVE TEXT FOR INPUTS
   public clearInput(): void {
     this.title = '';
