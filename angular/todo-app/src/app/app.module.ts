@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 import { HeaderComponent } from './header/header.component';
 import { TasksPanelComponent } from './tasks-panel/tasks-panel.component';
+import { TaskBuilderComponent } from './task-builder/task-builder.component';
 
 @NgModule({
   declarations: [
@@ -16,6 +17,7 @@ import { TasksPanelComponent } from './tasks-panel/tasks-panel.component';
     NavComponent,
     AppComponent,
     TasksPanelComponent,
+    TaskBuilderComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, TasksListModule],
   providers: [],

@@ -30,7 +30,7 @@ export class TaskListService implements OnDestroy {
     forkJoin([
       this._taskListDataService
         .loadTaskList()
-        .pipe(delay(2000), takeUntil(this.desctroySubject$)),
+        .pipe(takeUntil(this.desctroySubject$)),
       this._taskListDataService
         .loadSettings()
         .pipe(takeUntil(this.desctroySubject$)),
