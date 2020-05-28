@@ -1,0 +1,17 @@
+.tasks-page {
+  &__container {
+    margin: 0 auto;
+
+    width: 50%;
+  }
+
+  &__panel {
+    position: relative;
+
+    margin-bottom: 0.5rem;
+  }
+
+  &__tasks {
+    width: 100%;
+  }
+}

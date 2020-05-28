@@ -8,5 +8,15 @@ import { Component, OnInit } from '@angular/core';
 export class NavComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const bar: HTMLElement = document.querySelector('.nav__bar');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        bar.classList.add('nav__bar--active');
+      } else {
+        bar.classList.remove('nav__bar--active');
+      }
+    });
+  }
 }

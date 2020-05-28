@@ -11,6 +11,7 @@ import { TasksPanelComponent } from './tasks-panel/tasks-panel.component';
 import { TaskBuilderComponent } from './task-builder/task-builder.component';
 import { HomePageComponent } from './_pages/home-page/home-page.component';
 import { TasksPageComponent } from './_pages/tasks-page/tasks-page.component';
+import { NotFoundPageComponent } from './_pages/not-found-page/not-found-page.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TasksPageComponent } from './_pages/tasks-page/tasks-page.component';
     TaskBuilderComponent,
     HomePageComponent,
     TasksPageComponent,
+    NotFoundPageComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, TasksListModule],
   providers: [],

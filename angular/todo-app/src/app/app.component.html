@@ -1,24 +1,14 @@
 <div class="todo">
+  <div class="todo__nav">
+    <app-nav></app-nav>
+  </div>
+
   <div class="todo__container">
     <!-- LOGO SECTION -->
-    <router-outlet></router-outlet>
     <div class="todo__header">
       <app-header></app-header>
     </div>
 
-    <!-- TASK BUILDER SECTION -->
-    <div class="todo__nav">
-      <app-task-builder></app-task-builder>
-    </div>
-
-    <!-- PANEL SECTION -->
-    <div class="todo__panel">
-      <app-tasks-panel></app-tasks-panel>
-    </div>
-
-    <!-- TASKS LIST SECTION -->
-    <div class="todo__tasks">
-      <app-tasks-list></app-tasks-list>
-    </div>
+    <router-outlet></router-outlet>
   </div>
 </div>

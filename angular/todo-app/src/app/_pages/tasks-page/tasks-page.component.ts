@@ -3,13 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-tasks-page',
   templateUrl: './tasks-page.component.html',
-  styleUrls: ['./tasks-page.component.scss']
+  styleUrls: ['./tasks-page.component.scss'],
 })
 export class TasksPageComponent implements OnInit {
-
-  constructor() { }
+  constructor() {}
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
   }
-
 }

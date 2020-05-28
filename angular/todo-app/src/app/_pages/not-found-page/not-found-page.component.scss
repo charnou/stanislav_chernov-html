@@ -1,0 +1,16 @@
+.not-found {
+  text-align: center;
+  // .not-found__title
+
+  &__title {
+    font-size: 2rem;
+
+    color: #1a6988;
+  }
+
+  // .not-found__redirect
+
+  &__redirect {
+    color: #2581a5;
+  }
+}
