@@ -15,7 +15,7 @@ import { Task } from '../_services/task-list-data.service';
 export class TasksListComponent implements OnInit {
   constructor(public taskListService: TaskListService) {}
 
-  ngOnInit(): void {}
+  ngOnInit() {}
 
   drop(event: CdkDragDrop<Task[]>) {
     if (event.previousContainer === event.container) {

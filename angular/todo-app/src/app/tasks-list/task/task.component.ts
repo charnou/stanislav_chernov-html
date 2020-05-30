@@ -63,7 +63,7 @@ export class TaskComponent implements OnInit {
   // PUSH CHANGES FROM INTERMEDIATE INPUTS INTO Task{}
   public saveChanges(): void {
     this.task.title = this.editingTitle;
-    this.task.description = this.editingDescription ;
+    this.task.description = this.editingDescription;
     delete this.task.isEditing;
   }
 }

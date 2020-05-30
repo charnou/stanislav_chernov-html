@@ -8,5 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    window.scrollTo({
+      top: -100,
+    });
+  }
 }

@@ -5,8 +5,9 @@ import {
   TaskListSettings,
 } from './task-list-data.service';
 
-import { delay, takeUntil } from 'rxjs/operators';
-import { Subject, forkJoin } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
+import { Subject, forkJoin, ReplaySubject } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -14,6 +15,8 @@ import { Subject, forkJoin } from 'rxjs';
 export class TaskListService implements OnDestroy {
   public taskList: Task[] = [];
   public taskListCompleted: Task[] = [];
+
+  public TaskList$: ReplaySubject<Task[]> = new ReplaySubject<Task[]>(1);
 
   public settings = null;
 
@@ -26,7 +29,10 @@ export class TaskListService implements OnDestroy {
   private desctroySubject$: Subject<boolean> = new Subject<boolean>();
 
   // tslint:disable-next-line: variable-name
-  constructor(private _taskListDataService: TaskListDataService) {
+  constructor(
+    private _taskListDataService: TaskListDataService,
+    private _router: Router
+  ) {
     forkJoin([
       this._taskListDataService
         .loadTaskList()
@@ -58,6 +64,8 @@ export class TaskListService implements OnDestroy {
         this.taskList.splice(i, 1);
       }
     }
+
+    this.TaskList$.next(this.taskList);
   }
 
   // ADD TASK INTO taskList[]
@@ -116,5 +124,13 @@ export class TaskListService implements OnDestroy {
   public saveTaskList(): void {
     const saveTaskList = this.taskList.concat(this.taskListCompleted);
     this._taskListDataService.saveTaskList(saveTaskList);
+  }
+
+  public goToTaskDetails(id: number): void {
+    this._router.navigate(['/tasks', id + 1]);
+  }
+
+  public quitFromTaskDetails(): void {
+    this._router.navigate(['/tasks']);
   }
 }

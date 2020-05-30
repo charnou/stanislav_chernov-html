@@ -53,6 +53,13 @@
     >
       <p>delete</p>
     </div>
+
+    <a
+      class="task__task-details"
+      (click)="taskListService.goToTaskDetails(index)"
+    >
+      &rarr;
+    </a>
   </div>
 </ng-template>
 
@@ -71,7 +78,7 @@
 </ng-template>
 
 <ng-template #editingTask>
-  <div class="task">
+  <div class="task task--on-editing">
     <span class="task__number"> {{ index + 1 }}. </span>
 
     <input

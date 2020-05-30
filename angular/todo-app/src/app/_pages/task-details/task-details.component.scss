@@ -1,0 +1,60 @@
+.task-details {
+  position: relative;
+  margin: 0 auto;
+  padding: 0.5rem;
+
+  width: 50%;
+  height: max-content;
+  min-height: 12rem;
+
+  background-color: #fff;
+
+  &__go-back {
+    display: inline-block;
+
+    position: absolute;
+    top: -1.6rem;
+    left: 0;
+
+    width: 2rem;
+    height: 2rem;
+
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+
+    font-size: 1.2rem;
+
+    transition: 0.15s cubic-bezier(0.56, 0.25, 0.36, 1.29);
+
+    &:hover {
+      color: #2581a5;
+    }
+  }
+
+  // .task-details__title
+
+  &__title {
+    margin-bottom: 1.5rem;
+
+    font-size: 2.2rem;
+    font-weight: 600;
+  }
+
+  // .task-details__description
+
+  &__description {
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  // .task-details__time-log
+
+  &__time-log {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+
+    font-size: 1.2rem;
+  }
+}

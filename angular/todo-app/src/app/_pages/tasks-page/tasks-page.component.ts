@@ -6,9 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tasks-page.component.scss'],
 })
 export class TasksPageComponent implements OnInit {
-  constructor() {}
+  constructor(
+  ) {}
 
   ngOnInit(): void {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: -100,
+    });
   }
 }
