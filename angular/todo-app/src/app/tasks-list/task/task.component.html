@@ -78,7 +78,10 @@
 </ng-template>
 
 <ng-template #editingTask>
-  <div class="task task--on-editing">
+  <div
+    class="task task--on-editing"
+    [class.task--invalid]="titleModel.dirty && titleModel.invalid"
+  >
     <span class="task__number"> {{ index + 1 }}. </span>
 
     <input
@@ -86,6 +89,8 @@
       type="text"
       maxlength="30"
       [(ngModel)]="editingTitle"
+      #titleModel="ngModel"
+      required
     />
 
     <textarea
@@ -97,7 +102,11 @@
     >
     </textarea>
 
-    <div class="task__done-side" (click)="saveChanges()">
+    <div
+      class="task__done-side"
+      [class.task__done-side--disabled]="titleModel.dirty && titleModel.invalid"
+      (click)="saveChanges()"
+    >
       <p>save</p>
     </div>
 

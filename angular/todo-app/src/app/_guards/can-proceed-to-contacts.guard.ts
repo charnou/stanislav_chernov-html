@@ -19,6 +19,6 @@ export class CanProceedToContactsGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-    return confirm(`Are you sure you want proceed to the 'Contacts?'`);
+    return confirm(`Are you sure you want proceed to 'Contacts?'`);
   }
 }

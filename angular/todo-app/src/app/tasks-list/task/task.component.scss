@@ -66,6 +66,10 @@
     outline: 0.2rem dashed rgba(5, 59, 80, 0.253);
   }
 
+  &--invalid {
+    outline: 0.2rem solid rgba(226, 7, 7, 0.7);
+  }
+
   //delete task BUTTON
   &__delete-side {
     @include sideButton(right);
@@ -74,6 +78,10 @@
   //done task BUTTON
   &__done-side {
     @include sideButton(left);
+
+    &--disabled {
+      pointer-events: none;
+    }
   }
 
   //edit task BUTTON
@@ -104,7 +112,7 @@
     margin-top: 0.1rem;
 
     height: 1.6rem;
-    width: 80%;
+    width: max-content;
 
     border: none;
     outline: none;

@@ -4,34 +4,39 @@
     {{ time | date: "EEEE HH:mm" }}
   </div>
 
-  <form autocomplete="off">
+  <form
+    autocomplete="off"
+    #taskForm="ngForm"
+    (ngSubmit)="buildTask(); addTask()"
+  >
     <!-- TITLE -->
     <input
       class="task-builder__title"
+      name="taskBuilder"
       type="text"
       maxlength="30"
       placeholder="Title"
       [(ngModel)]="title"
-      name="taskBuilder"
+      required
       autofocus
     />
 
     <!-- DESCRIPTION -->
     <textarea
       class="task-builder__description"
-      maxlength="60"
+      name="taskBuilder"
+      maxlength="180"
       placeholder="Description"
       [(ngModel)]="description"
-      name="taskBuilder"
     >
     </textarea>
 
     <!-- CONFIRM BUTTON -->
     <button
       class="task-builder__add-task"
+      type="submit"
       [class.task-builder__add-task--active]="title.length !== 0"
       [disabled]="title.length === 0"
-      (click)="buildTask(); addTask()"
     >
       Add task
     </button>
@@ -39,6 +44,7 @@
     <!-- CLEAR BUTTON -->
     <button
       class="task-builder__clear-input"
+      type="button"
       [class.task-builder__clear-input--active]="canClear()"
       [disabled]="!canClear()"
       (click)="clearInput()"
