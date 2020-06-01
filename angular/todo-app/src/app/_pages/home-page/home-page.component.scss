@@ -1,0 +1,26 @@
+.home-page {
+  &__container {
+    margin: 0 auto;
+
+    width: 75%;
+  }
+
+  &__title {
+    text-align: center;
+
+    padding: 0.4rem 0;
+
+    color: #2581a5;
+    background-color: #053b5018;
+
+    &::selection {
+      background-color: #99d6ee;
+    }
+  }
+
+  &__text {
+    line-height: 1.2;
+
+    color: #053b50;
+  }
+}

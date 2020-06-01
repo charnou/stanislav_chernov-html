@@ -1,0 +1,24 @@
+.contacts-page {
+  &__container {
+    margin: 0 auto;
+
+    width: 75%;
+  }
+
+  &__title {
+    display: inline-block;
+
+    margin-bottom: 0.1rem;
+    margin-right: 0.2rem;
+
+    text-align: left;
+
+    font-size: 1.2rem;
+
+    color: #2581a5;
+  }
+
+  &__text {
+    display: inline-block;
+  }
+}

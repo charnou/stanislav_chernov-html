@@ -1,0 +1,19 @@
+.todo {
+  &__container {
+    padding: 5rem 0 0;
+
+    width: 100%;
+    height: max-content;
+    min-height: 100vh;
+
+    background-image: radial-gradient(
+      circle 45rem at 47.3% 48%,
+      rgba(255, 255, 255, 1) 0%,
+      rgb(217, 239, 248) 90%
+    );
+  }
+
+  &__header {
+    margin: 0 0 3.5rem;
+  }
+}

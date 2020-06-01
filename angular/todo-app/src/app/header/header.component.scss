@@ -1,0 +1,20 @@
+.header {
+  position: relative;
+
+  margin: 0 auto;
+
+  width: max-content;
+
+  color: #125975;
+  font-size: 3.3rem;
+
+  &:after {
+    content: ")";
+    position: absolute;
+    top: 46%;
+    left: 44.4%;
+
+    transform: rotate(90deg);
+  }
+
+}

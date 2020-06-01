@@ -1,0 +1,68 @@
+<ng-container *ngIf="!taskListService.isLoading">
+  <!-- UPCOMING TASKS -->
+  <div
+    class="task-list"
+    cdkDropList
+    #taskList="cdkDropList"
+    [cdkDropListData]="taskListService.taskList"
+    [cdkDropListConnectedTo]="[taskListCompleted]"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-task
+      class="task-list__task"
+      *ngFor="
+        let task of taskListService.taskList
+          | taskFilter: taskListService.searchString;
+        let i = index
+      "
+      cdkDrag
+      [task]="task"
+      [index]="i"
+      (onTaskDelete)="taskListService.deleteTask($event)"
+      (onTaskComplete)="taskListService.completeTask($event)"
+    >
+      <div class="task-list--custom-placeholder" *cdkDragPlaceholder></div>
+    </app-task>
+  </div>
+
+  <div
+    class="task-list__line-separator"
+    *ngIf="
+      taskListService.taskListCompleted.length > 0 &&
+      taskListService.taskList.length > 0
+    "
+  ></div>
+
+  <!-- COMPLETED TASKS -->
+  <div
+    class="task-list"
+    cdkDropList
+    #taskListCompleted="cdkDropList"
+    [cdkDropListData]="taskListService.taskListCompleted"
+    [cdkDropListConnectedTo]="[taskList]"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <app-task
+      class="task-list__task"
+      cdkDrag
+      *ngFor="
+        let completedTask of taskListService.taskListCompleted
+          | taskFilter: taskListService.searchString;
+        let i = index
+      "
+      [task]="completedTask"
+      (onTaskDelete)="taskListService.deleteTask($event)"
+      (onTaskComplete)="taskListService.completeTask($event)"
+    >
+      <div class="task-list--custom-placeholder" *cdkDragPlaceholder></div>
+    </app-task>
+  </div>
+</ng-container>
+
+<!-- LOADER ANIMATION -->
+<div class="task-list--loading lds-ellipsis" *ngIf="taskListService.isLoading">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>

@@ -1,0 +1,117 @@
+<ng-container *ngIf="!task.isEditing && !task.isCompleted">
+  <div *ngTemplateOutlet="defaultTask"></div>
+</ng-container>
+
+<ng-container *ngIf="task.isEditing && !task.isCompleted">
+  <div *ngTemplateOutlet="editingTask"></div>
+</ng-container>
+
+<ng-container *ngIf="task.isCompleted && !task.isEditing">
+  <div *ngTemplateOutlet="completedTask"></div>
+</ng-container>
+
+<!-- NG TEMPLATES -->
+
+<ng-template #defaultTask>
+  <div
+    class="task"
+    [class.task--delete-on-hover]="isDeleteHover"
+    [class.task--done-on-hover]="isDoneHover"
+  >
+    <span class="task__number"> {{ index + 1 }}. </span>
+
+    <span class="task__title">{{ task.title }}</span>
+
+    <div class="task__edit-button" (click)="editToggle(); syncInputs()">
+      &#9998;
+    </div>
+
+    <div class="task__description">
+      {{ task.description }}
+    </div>
+
+    <span class="task__time">
+      {{ task.timeLog | date: "EE HH:mm:ss, d MMM" }}
+    </span>
+
+    <div
+      class="task__done-side"
+      [class.task__done-side--transparent]="isDeleteHover"
+      (mouseover)="isDoneHover = true"
+      (mouseout)="isDoneHover = false"
+      (click)="completeTask()"
+    >
+      <p>done</p>
+    </div>
+
+    <div
+      class="task__delete-side"
+      [class.task__delete-side--transparent]="isDoneHover"
+      (mouseover)="isDeleteHover = true"
+      (mouseout)="isDeleteHover = false"
+      (click)="deleteTask()"
+    >
+      <p>delete</p>
+    </div>
+
+    <a
+      class="task__task-details"
+      (click)="taskListService.goToTaskDetails(index)"
+    >
+      &rarr;
+    </a>
+  </div>
+</ng-template>
+
+<ng-template #completedTask>
+  <div class="task task--when-completed">
+    <span class="task__title">{{ task.title }}</span>
+
+    <div class="task__description">
+      {{ task.description }}
+    </div>
+
+    <span class="task__time">
+      {{ task.timeLog | date: "EE HH:mm:ss, d MMM" }}
+    </span>
+  </div>
+</ng-template>
+
+<ng-template #editingTask>
+  <div
+    class="task task--on-editing"
+    [class.task--invalid]="titleModel.dirty && titleModel.invalid"
+  >
+    <span class="task__number"> {{ index + 1 }}. </span>
+
+    <input
+      class="task__title-input"
+      type="text"
+      maxlength="30"
+      [(ngModel)]="editingTitle"
+      #titleModel="ngModel"
+      required
+    />
+
+    <textarea
+      class="task__description-input"
+      type="text"
+      maxlength="60"
+      [(ngModel)]="editingDescription"
+      placeholder="No description..."
+    >
+    </textarea>
+
+    <div
+      class="task__done-side"
+      [class.task__done-side--disabled]="titleModel.dirty && titleModel.invalid"
+      (click)="saveChanges()"
+    >
+      <p>save</p>
+    </div>
+
+    <div class="task__delete-side" (click)="editToggle()">
+      <p>cancel</p>
+    </div>
+  </div>
+</ng-template>
