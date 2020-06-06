@@ -3,44 +3,40 @@ import { Observable, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 
-export interface Task {
-  title: string;
-  description: string;
-  timeLog: Date;
-  isCompleted?: boolean;
-  isEditing?: boolean;
-}
+import { Task } from '../_models/task';
 
 export interface TaskListSettings {
-  isSearchActive: boolean;
-  isSortActive: boolean;
+	isSearchActive: boolean;
+	isSortActive: boolean;
 }
 
 @Injectable({
-  providedIn: 'root',
+	providedIn: 'root',
 })
 export class TaskListDataService {
-  private _tasksLoadURL = 'assets/task-list.json';
-  private _settingsLoadURL = 'assets/task-list-settings.json';
+	private _tasksLoadURL: string = 'assets/task-list.json';
+	private _settingsLoadURL: string = 'assets/task-list-settings.json';
 
-  private LSKey = 'TUDOO--task-list';
+	private LSKey: string = 'TUDOO--task-list';
 
-  constructor(private _httpClient: HttpClient) {}
+	constructor(private _httpClient: HttpClient) {}
 
-  public loadTaskList(): Observable<Task[]> {
-    const LSData = localStorage.getItem(this.LSKey);
-    if (LSData) {
-      return of(JSON.parse(LSData));
-    } else {
-      return this._httpClient.get<Task[]>(`${this._tasksLoadURL}`);
-    }
-  }
+	public loadTaskList(): Observable<Task[]> {
+		const LSData: string = localStorage.getItem(this.LSKey);
+		if (Boolean(LSData)) {
+			return of(JSON.parse(LSData));
+		} else {
+			return this._httpClient.get<Task[]>(`${this._tasksLoadURL}`);
+		}
+	}
 
-  public loadSettings(): Observable<TaskListSettings> {
-    return this._httpClient.get<TaskListSettings>(`${this._settingsLoadURL}`);
-  }
+	public loadSettings(): Observable<TaskListSettings> {
+		return this._httpClient.get<TaskListSettings>(
+			`${this._settingsLoadURL}`
+		);
+	}
 
-  public saveTaskList(taskList: Task[]): void {
-    localStorage.setItem(this.LSKey, JSON.stringify(taskList));
-  }
+	public saveTaskList(taskList: Task[]): void {
+		localStorage.setItem(this.LSKey, JSON.stringify(taskList));
+	}
 }

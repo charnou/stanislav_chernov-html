@@ -3,14 +3,14 @@ import { Routes, RouterModule } from '@angular/router';
 import { TaskDetailsComponent } from './task-details.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: TaskDetailsComponent,
-  },
+	{
+		path: '',
+		component: TaskDetailsComponent,
+	},
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forChild(routes)],
+	exports: [RouterModule],
 })
 export class AppRoutingModule {}
