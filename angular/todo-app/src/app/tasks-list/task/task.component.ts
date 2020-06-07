@@ -1,7 +1,7 @@
 import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { TaskListService } from 'src/app/_services/task-list.service';
 
-import { Task } from 'src/app/_models/task';
+import { Task } from 'src/app/_models/task.model';
 
 @Component({
 	selector: 'app-task',

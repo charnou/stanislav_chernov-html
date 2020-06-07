@@ -3,7 +3,7 @@ import { Observable, of } from 'rxjs';
 
 import { HttpClient } from '@angular/common/http';
 
-import { Task } from '../_models/task';
+import { Task } from '../_models/task.model';
 
 export interface TaskListSettings {
 	isSearchActive: boolean;

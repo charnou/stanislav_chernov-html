@@ -8,7 +8,7 @@ import { takeUntil, delay } from 'rxjs/operators';
 import { Subject, forkJoin, ReplaySubject } from 'rxjs';
 import { Router } from '@angular/router';
 
-import { Task } from '../_models/task';
+import { Task } from '../_models/task.model';
 
 @Injectable({
 	providedIn: 'root',

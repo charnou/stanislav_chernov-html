@@ -5,7 +5,7 @@ import { takeUntil } from 'rxjs/operators';
 
 import { TaskListService } from '../../_services/task-list.service';
 
-import { Task } from 'src/app/_models/task';
+import { Task } from 'src/app/_models/task.model';
 
 @Component({
 	selector: 'app-task-details',

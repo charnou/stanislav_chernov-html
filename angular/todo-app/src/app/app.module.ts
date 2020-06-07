@@ -14,6 +14,12 @@ import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import { StoreRouterConnectingModule } from '@ngrx/router-store';
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -27,7 +33,19 @@ import { NgModule } from '@angular/core';
 		NotFoundPageComponent,
 		ContactsPageComponent,
 	],
-	imports: [BrowserModule, AppRoutingModule, FormsModule, TasksListModule],
+	imports: [
+		BrowserModule,
+		AppRoutingModule,
+		FormsModule,
+		TasksListModule,
+		StoreModule.forRoot({}, {}),
+		StoreDevtoolsModule.instrument({
+			maxAge: 25,
+			logOnly: environment.production,
+		}),
+		EffectsModule.forRoot([]),
+		StoreRouterConnectingModule.forRoot(),
+	],
 	providers: [],
 	bootstrap: [AppComponent],
 })

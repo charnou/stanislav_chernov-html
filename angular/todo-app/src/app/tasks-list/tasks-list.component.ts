@@ -6,7 +6,7 @@ import {
 	transferArrayItem,
 } from '@angular/cdk/drag-drop';
 
-import { Task } from '../_models/task';
+import { Task } from '../_models/task.model';
 
 @Component({
 	selector: 'app-tasks-list',

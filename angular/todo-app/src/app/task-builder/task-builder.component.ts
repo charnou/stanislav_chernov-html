@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { TaskListService } from '../_services/task-list.service';
 
-import { Task } from '../_models/task';
+import { Task } from '../_models/task.model';
 
 @Component({
 	selector: 'app-task-builder',
