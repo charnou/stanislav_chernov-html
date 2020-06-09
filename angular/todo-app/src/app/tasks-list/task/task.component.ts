@@ -2,6 +2,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { TaskListService } from 'src/app/_services/task-list.service';
 
 import { Task } from 'src/app/_models/task.model';
+import { TasksFacade } from 'src/app/store';
+import { deleteTask } from '../../store/tasks/tasks.actions';
 
 @Component({
 	selector: 'app-task',
@@ -24,19 +26,22 @@ export class TaskComponent {
 	@Input()
 	public index: number;
 
-	constructor(public taskListService: TaskListService) {
+	constructor(
+		public taskListService: TaskListService,
+		public tasksFacade: TasksFacade
+	) {
 		this.isDeleteHover = false;
 		this.isDoneHover = false;
 	}
 
 	// CALL PARENT TO DELETE TASK
 	public deleteTask(): void {
-		this.taskListService.deleteTask(this.task);
+		this.tasksFacade.deleteTask(this.task);
 	}
 
 	// CALL PARENT TO COMPLETE TASK
 	public completeTask(): void {
-		this.taskListService.completeTask(this.task);
+		this.tasksFacade.completeTask(this.task);
 	}
 
 	// CHANGE STATE TO 'EDITING'

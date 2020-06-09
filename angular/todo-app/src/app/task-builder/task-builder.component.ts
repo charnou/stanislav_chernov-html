@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskListService } from '../_services/task-list.service';
 
 import { Task } from '../_models/task.model';
+import { TasksFacade } from '../store/tasks/tasks.facade';
 
 @Component({
 	selector: 'app-task-builder',
@@ -18,7 +19,10 @@ export class TaskBuilderComponent implements OnInit {
 	public description: string;
 	public time: Date;
 
-	constructor(public taskListService: TaskListService) {
+	constructor(
+		public taskListService: TaskListService,
+		public tasksFacade: TasksFacade
+	) {
 		this.title = '';
 		this.description = '';
 		this.time = new Date();
@@ -26,11 +30,11 @@ export class TaskBuilderComponent implements OnInit {
 
 	// CLOCK TIME UPDATING
 	public ngOnInit(): void {
-		const timeUpdatingInterval: number = 1000;
+		const WATCH_INTERVAL: number = 1000;
 
 		setInterval(() => {
 			this.time = new Date();
-		}, timeUpdatingInterval);
+		}, WATCH_INTERVAL);
 	}
 
 	public canClear(): boolean {
@@ -69,6 +73,6 @@ export class TaskBuilderComponent implements OnInit {
 
 	// PUSH Task{} INTO PARENT
 	public addTask(): void {
-		this.taskListService.addTask(this.task);
+		this.tasksFacade.addTask(this.task);
 	}
 }

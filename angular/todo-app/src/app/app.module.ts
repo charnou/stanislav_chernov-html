@@ -19,6 +19,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
+import { reducers } from './store/index';
 
 @NgModule({
 	declarations: [
@@ -38,12 +39,12 @@ import { StoreRouterConnectingModule } from '@ngrx/router-store';
 		AppRoutingModule,
 		FormsModule,
 		TasksListModule,
-		StoreModule.forRoot({}, {}),
+		StoreModule.forRoot(reducers),
+		EffectsModule.forRoot([]),
 		StoreDevtoolsModule.instrument({
 			maxAge: 25,
 			logOnly: environment.production,
 		}),
-		EffectsModule.forRoot([]),
 		StoreRouterConnectingModule.forRoot(),
 	],
 	providers: [],
