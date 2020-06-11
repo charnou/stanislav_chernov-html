@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 
@@ -15,13 +14,7 @@ import { TaskListDataService } from '../_services/task-list-data.service';
 
 @NgModule({
 	declarations: [TasksListComponent, TaskComponent, TaskFilterPipe],
-	imports: [
-		BrowserModule,
-		CommonModule,
-		FormsModule,
-		DragDropModule,
-		HttpClientModule,
-	],
+	imports: [BrowserModule, CommonModule, FormsModule, HttpClientModule],
 	providers: [TaskListService, TaskListDataService],
 	exports: [TasksListComponent],
 })

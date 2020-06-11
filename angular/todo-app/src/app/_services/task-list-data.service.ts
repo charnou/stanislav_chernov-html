@@ -15,7 +15,6 @@ export interface TaskListSettings {
 })
 export class TaskListDataService {
 	private _tasksLoadURL: string = 'assets/task-list.json';
-	private _settingsLoadURL: string = 'assets/task-list-settings.json';
 
 	private LSKey: string = 'TUDOO--task-list';
 
@@ -28,12 +27,6 @@ export class TaskListDataService {
 		} else {
 			return this._httpClient.get<Task[]>(`${this._tasksLoadURL}`);
 		}
-	}
-
-	public loadSettings(): Observable<TaskListSettings> {
-		return this._httpClient.get<TaskListSettings>(
-			`${this._settingsLoadURL}`
-		);
 	}
 
 	public saveTaskList(taskList: Task[]): void {

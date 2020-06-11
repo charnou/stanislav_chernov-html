@@ -19,7 +19,8 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
-import { reducers } from './store/index';
+import { reducers } from './store';
+import { TasksEffects } from './store/tasks';
 
 @NgModule({
 	declarations: [
@@ -40,7 +41,7 @@ import { reducers } from './store/index';
 		FormsModule,
 		TasksListModule,
 		StoreModule.forRoot(reducers),
-		EffectsModule.forRoot([]),
+		EffectsModule.forRoot([TasksEffects]),
 		StoreDevtoolsModule.instrument({
 			maxAge: 25,
 			logOnly: environment.production,

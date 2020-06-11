@@ -19,13 +19,6 @@ const routes: Routes = [
 		path: 'tasks',
 		component: TasksPageComponent,
 	},
-	{
-		path: 'tasks/:id',
-		loadChildren: () =>
-			import('./_pages/task-details/task-details.module').then(
-				(m: any) => m.TaskDetailsModule
-			),
-	},
 
 	{
 		path: 'contacts',

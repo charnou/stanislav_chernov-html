@@ -4,8 +4,10 @@ import {
 	MemoizedSelector,
 	MemoizedSelectorWithProps,
 } from '@ngrx/store';
+
 import { ITasksState } from './tasks.state';
 import { IAppState, FeatureKey } from '../index';
+
 import { Task } from '../../_models/task.model';
 
 export const selectStateTasks: MemoizedSelector<
@@ -16,6 +18,14 @@ export const selectStateTasks: MemoizedSelector<
 export const selectTasks: MemoizedSelector<IAppState, Task[]> = createSelector(
 	selectStateTasks,
 	(state: ITasksState) => state.taskList
+);
+
+export const selectTasksCompleted: MemoizedSelector<
+	IAppState,
+	Task[]
+> = createSelector(
+	selectStateTasks,
+	(state: ITasksState) => state.taskListCompleted
 );
 
 export const selectTaskByTimelog: MemoizedSelectorWithProps<

@@ -6,11 +6,16 @@ import {
 	transferArrayItem,
 } from '@angular/cdk/drag-drop';
 
-import { Task } from '../_models/task.model';
 import { Store, select } from '@ngrx/store';
-
 import { Observable } from 'rxjs';
-import { selectTasks } from '../store/tasks/tasks.selectors';
+
+import { Task } from '../_models/task.model';
+import { ITasksState, TasksFacade } from '../store/tasks';
+import { selectTasksCompleted } from '../store/tasks/tasks.selectors';
+import {
+	selectTasks,
+	selectIsTasksLoading,
+} from '../store/tasks/tasks.selectors';
 
 @Component({
 	selector: 'app-tasks-list',
@@ -18,11 +23,14 @@ import { selectTasks } from '../store/tasks/tasks.selectors';
 	styleUrls: ['./tasks-list.component.scss'],
 })
 export class TasksListComponent implements OnInit {
-	public tasks$: Observable<Task[]>;
+	public taskList$: Observable<Task[]>;
+	public taskListCompleted$: Observable<Task[]>;
+	public tasksIsLoading$: Observable<boolean>;
 
 	constructor(
 		public taskListService: TaskListService,
-		private store: Store
+		private store: Store<{ Tasks: ITasksState }>,
+		public tasksFacade: TasksFacade
 	) {}
 
 	public drop(event: CdkDragDrop<Task[]>): void {
@@ -39,11 +47,13 @@ export class TasksListComponent implements OnInit {
 				event.previousIndex,
 				event.currentIndex
 			);
-			this.taskListService.checkArrays();
 		}
 	}
 
 	public ngOnInit(): void {
-		this.tasks$ = this.store.pipe(select(selectTasks));
+		this.tasksFacade.loadTasks();
+		this.taskList$ = this.store.pipe(select(selectTasks));
+		this.taskListCompleted$ = this.store.pipe(select(selectTasksCompleted));
+		this.tasksIsLoading$ = this.store.pipe(select(selectIsTasksLoading));
 	}
 }

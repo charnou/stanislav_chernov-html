@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TaskListService } from './_services/task-list.service';
 
 @Component({
 	selector: 'app-root',
@@ -7,5 +6,5 @@ import { TaskListService } from './_services/task-list.service';
 	styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-	constructor(public taskListService: TaskListService) {}
+	
 }

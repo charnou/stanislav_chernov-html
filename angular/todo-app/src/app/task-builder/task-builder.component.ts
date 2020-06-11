@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { TaskListService } from '../_services/task-list.service';
 
 import { Task } from '../_models/task.model';
-import { TasksFacade } from '../store/tasks/tasks.facade';
+import { TasksFacade } from '../store/tasks';
 
 @Component({
 	selector: 'app-task-builder',

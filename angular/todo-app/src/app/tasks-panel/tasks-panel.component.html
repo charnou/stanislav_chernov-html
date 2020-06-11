@@ -1,58 +1,48 @@
-<ng-container *ngIf="taskListService.settings">
-  <!-- TASKS COUNTER -->
-  <div class="tasks-panel__counter">
-    <span> Left: {{ taskListService.taskList.length }} </span>
-    <span *ngIf="taskListService.taskListCompleted.length > 0">
-      Completed: {{ taskListService.taskListCompleted.length }}
-    </span>
-  </div>
+<ng-container *ngIf="!(tasksIsLoading$ | async)">
+	<!-- TASKS COUNTER -->
+	<div class="tasks-panel__counter">
+		<span> Left: {{ tasksIncoming.length }} </span>
+		<span *ngIf="tasksCompleted.length > 0">
+			Completed: {{ tasksCompleted.length }}
+		</span>
+	</div>
 
-  <!-- SAVE CHANGES -->
-  <button
-    class="tasks-panel__save-changes"
-    (click)="taskListService.saveTaskList()"
-  >
-    Save changes
-  </button>
+	<!-- SAVE CHANGES -->
+	<button class="tasks-panel__save-changes">
+		AutoSave is working now
+	</button>
 
-  <!-- SEARCH -->
-  <input
-    class="tasks-panel__search"
-    *ngIf="taskListService.settings.isSearchActive"
-    type="text"
-    maxlength="20"
-    [(ngModel)]="taskListService.searchString"
-    placeholder="Search..."
-    [disabled]="
-      taskListService.taskList.length === 0 &&
-      taskListService.taskListCompleted.length === 0
-    "
-  />
+	<!-- SEARCH -->
+	<input
+		class="tasks-panel__search"
+		type="text"
+		maxlength="20"
+		[(ngModel)]="taskListService.searchString"
+		placeholder="Search..."
+		[disabled]="tasksIncoming.length === 0 && tasksCompleted.length === 0"
+	/>
 
-  <!-- SORT TOGGLE -->
-  <ng-container
-    *ngIf="
-      taskListService.taskList.length !== 0 ||
-      taskListService.taskListCompleted.length !== 0
-    "
-  >
-    <ng-container *ngIf="taskListService.settings.isSortActive">
-      <div
-        class="tasks-panel__sort-toggle"
-        (click)="taskListService.sort()"
-        *ngIf="taskListService.arraySortToggle"
-      >
-        ▲
-      </div>
-      <div
-        class="tasks-panel__sort-toggle"
-        (click)="taskListService.sort()"
-        *ngIf="!taskListService.arraySortToggle"
-      >
-        ▼
-      </div>
-    </ng-container>
-  </ng-container>
+	<!-- SORT TOGGLE -->
+	<ng-container
+		*ngIf="tasksIncoming.length !== 0 || tasksCompleted.length !== 0"
+	>
+		<ng-container>
+			<div
+				class="tasks-panel__sort-toggle"
+				(click)="taskListService.sort()"
+				*ngIf="taskListService.arraySortToggle"
+			>
+				▲
+			</div>
+			<div
+				class="tasks-panel__sort-toggle"
+				(click)="taskListService.sort()"
+				*ngIf="!taskListService.arraySortToggle"
+			>
+				▼
+			</div>
+		</ng-container>
+	</ng-container>
 
-  <div class="tasks-panel__line-separator"></div>
+	<div class="tasks-panel__line-separator"></div>
 </ng-container>

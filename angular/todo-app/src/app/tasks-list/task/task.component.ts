@@ -2,8 +2,7 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
 import { TaskListService } from 'src/app/_services/task-list.service';
 
 import { Task } from 'src/app/_models/task.model';
-import { TasksFacade } from 'src/app/store';
-import { deleteTask } from '../../store/tasks/tasks.actions';
+import { TasksFacade } from 'src/app/store/tasks';
 
 @Component({
 	selector: 'app-task',
@@ -44,13 +43,13 @@ export class TaskComponent {
 		this.tasksFacade.completeTask(this.task);
 	}
 
+	public unCompleteTask(): void {
+		this.tasksFacade.unCompleteTask(this.task);
+	}
+
 	// CHANGE STATE TO 'EDITING'
 	public editToggle(): void {
-		if (this.task.isEditing === false) {
-			this.task.isEditing = true;
-		} else if (this.task.isEditing === true) {
-			this.task.isEditing = false;
-		}
+		this.tasksFacade.editTask(this.task);
 	}
 
 	// SYNC OF Task{} FIELD AND INTERMEDIATE INPUTS
@@ -61,8 +60,15 @@ export class TaskComponent {
 
 	// PUSH CHANGES FROM INTERMEDIATE INPUTS INTO Task{}
 	public saveChanges(): void {
-		this.task.title = this.editingTitle;
-		this.task.description = this.editingDescription;
-		this.task.isEditing = false;
+		if (
+			this.editingTitle !== this.task.title &&
+			this.editingDescription !== this.task.description
+		) {
+			this.tasksFacade.saveChanges({
+				title: this.editingTitle,
+				description: this.editingDescription,
+				timeLog: this.task.timeLog,
+			});
+		}
 	}
 }
