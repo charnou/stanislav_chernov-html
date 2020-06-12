@@ -1,8 +1,6 @@
 import { ActionReducerMap } from '@ngrx/store';
 import { tasksReducer, ITasksState } from './tasks';
 
-// export * from './tasks';
-
 export const enum FeatureKey {
 	Tasks = 'Tasks',
 }
