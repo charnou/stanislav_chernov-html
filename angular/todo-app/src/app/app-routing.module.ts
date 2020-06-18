@@ -8,37 +8,30 @@ import { Routes, RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    component: HomePageComponent,
-    canDeactivate: [CanProceedFromHomeGuard],
-  },
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+	{
+		path: 'home',
+		component: HomePageComponent,
+		canDeactivate: [CanProceedFromHomeGuard],
+	},
+	{ path: '', redirectTo: '/home', pathMatch: 'full' },
 
-  {
-    path: 'tasks',
-    component: TasksPageComponent,
-  },
-  {
-    path: 'tasks/:id',
-    loadChildren: () =>
-      import('./_pages/task-details/task-details.module').then(
-        (m) => m.TaskDetailsModule
-      ),
-  },
+	{
+		path: 'tasks',
+		component: TasksPageComponent,
+	},
 
-  {
-    path: 'contacts',
-    component: ContactsPageComponent,
-    canActivate: [CanProceedToContactsGuard],
-  },
+	{
+		path: 'contacts',
+		component: ContactsPageComponent,
+		canActivate: [CanProceedToContactsGuard],
+	},
 
-  { path: '404', component: NotFoundPageComponent },
-  { path: '**', redirectTo: '/404', pathMatch: 'full' },
+	{ path: '404', component: NotFoundPageComponent },
+	{ path: '**', redirectTo: '/404', pathMatch: 'full' },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
+	imports: [RouterModule.forRoot(routes)],
+	exports: [RouterModule],
 })
 export class AppRoutingModule {}

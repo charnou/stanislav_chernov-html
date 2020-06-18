@@ -1,16 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { TaskListService } from './_services/task-list.service';
-import { TaskListDataService } from './_services/task-list-data.service';
+import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+	selector: 'app-root',
+	templateUrl: './app.component.html',
+	styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
-  constructor(
-    public taskListService: TaskListService,
-  ) {}
-
-  ngOnInit() {}
+export class AppComponent {
+	
 }
